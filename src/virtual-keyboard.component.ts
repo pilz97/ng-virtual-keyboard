@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 import { keyboardCapsLockLayout, KeyboardLayout } from './layouts';
@@ -69,8 +69,8 @@ import { KeyPressInterface } from './key-press.interface';
 export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   @ViewChild('keyboardInput') keyboardInput: ElementRef;
 
-  public inputElement: ElementRef;
-  public layout: KeyboardLayout;
+  @Input() inputElement: ElementRef;
+  @Input() layout: KeyboardLayout;
   public placeholder: string;
   public type: string;
   public disabled: boolean;
