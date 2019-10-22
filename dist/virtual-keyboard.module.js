@@ -37,6 +37,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                     ],
                     exports: [
                         virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
+                        virtual_keyboard_component_1.VirtualKeyboardComponent,
                     ]
                 },] },
     ];

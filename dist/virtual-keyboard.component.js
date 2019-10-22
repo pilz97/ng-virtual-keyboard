@@ -227,7 +227,9 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         { type: virtual_keyboard_service_1.VirtualKeyboardService }
     ]; };
     VirtualKeyboardComponent.propDecorators = {
-        keyboardInput: [{ type: core_1.ViewChild, args: ['keyboardInput',] }]
+        keyboardInput: [{ type: core_1.ViewChild, args: ['keyboardInput',] }],
+        inputElement: [{ type: core_1.Input }],
+        layout: [{ type: core_1.Input }]
     };
     return VirtualKeyboardComponent;
 }());
