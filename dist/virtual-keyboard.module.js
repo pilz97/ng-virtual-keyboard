@@ -12,6 +12,14 @@ var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
 var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
+    NgVirtualKeyboardModule.forRoot = function () {
+        return {
+            ngModule: NgVirtualKeyboardModule,
+            providers: [
+                { provide: material_1.MatDialogRef, useValue: {} },
+            ],
+        };
+    };
     NgVirtualKeyboardModule.decorators = [
         { type: core_1.NgModule, args: [{
                     declarations: [
