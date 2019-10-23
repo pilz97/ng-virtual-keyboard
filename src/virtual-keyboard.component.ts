@@ -10,14 +10,14 @@ import { KeyPressInterface } from './key-press.interface';
   template: `
     <div class="container">
       <div fxLayout="column">
-        <mat-form-field>
+        <mat-form-field *ngIf="isDialog">
           <button class="close" color="primary" mat-button mat-mini-fab
             (click)="close()"
           >
             <mat-icon>check</mat-icon>
           </button>
     
-          <input type="{{type}}" *ngIf="isDialog"
+          <input type="{{type}}"
             matInput
             #keyboardInput
             (click)="updateCaretPosition()"
