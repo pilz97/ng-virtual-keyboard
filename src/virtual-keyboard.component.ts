@@ -17,7 +17,7 @@ import { KeyPressInterface } from './key-press.interface';
             <mat-icon>check</mat-icon>
           </button>
     
-          <input type="{{type}}"
+          <input type="{{type}}" *ngIf="isDialog"
             matInput
             #keyboardInput
             (click)="updateCaretPosition()"
@@ -69,8 +69,10 @@ import { KeyPressInterface } from './key-press.interface';
 export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   @ViewChild('keyboardInput') keyboardInput: ElementRef;
 
-  @Input() inputElement: ElementRef;
+  public inputElement: ElementRef;
+  @Input() inputRef: any;
   @Input() layout: KeyboardLayout;
+  public isDialog: boolean = false;
   public placeholder: string;
   public type: string;
   public disabled: boolean;
@@ -145,12 +147,18 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
         VirtualKeyboardComponent.setSelectionRange(this.keyboardInput.nativeElement, caretPosition, caretPosition);
       }, 0);
     });
-
-    if (this.inputElement.nativeElement.value.length) {
-      this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
+    this.maxLength = '';
+    if (this.inputElement !== undefined) {
+      if (this.inputElement.nativeElement.value.length) {
+        this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
+      }
+  
+      this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';  
     }
-
-    this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
+    if (!this.isDialog) {
+      console.log('overwrite keyboard input');
+      this.keyboardInput = new ElementRef(this.inputRef);
+    }
 
     this.checkDisabled();
   }
@@ -209,6 +217,11 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    * Method to check is virtual keyboard input is disabled.
    */
   private checkDisabled(): void {
+    if (this.inputElement === undefined) {
+      this.disabled = false;
+      return;
+    }
+
     const maxLength = this.inputElement.nativeElement.maxLength;
     const valueLength = this.inputElement.nativeElement.value.length;
 
@@ -222,6 +235,10 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    */
   private handleNormalKey(keyValue: string): void {
     let value = '';
+
+    if(this.inputElement === undefined) {
+      return;
+    }
 
     // We have caret position, so attach character to specified position
     if (!isNaN(this.caretPosition)) {
@@ -310,10 +327,12 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     };
 
     // Simulate all needed events on base element
-    this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keydown', eventInit));
-    this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keypress', eventInit));
-    this.inputElement.nativeElement.dispatchEvent(new Event('input', {bubbles : true}));
-    this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', eventInit));
+    if (this.inputElement !== undefined) {
+      this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keydown', eventInit));
+      this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keypress', eventInit));
+      this.inputElement.nativeElement.dispatchEvent(new Event('input', {bubbles : true}));
+      this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', eventInit));
+    }
 
     // And set focus to input
     this.keyboardInput.nativeElement.focus();

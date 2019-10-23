@@ -67,6 +67,7 @@ export class NgVirtualKeyboardDirective {
       let dialogRef: MatDialogRef<VirtualKeyboardComponent>;
 
       dialogRef = this.dialog.open(VirtualKeyboardComponent);
+      dialogRef.componentInstance.isDialog = true;
       dialogRef.componentInstance.inputElement = this.element;
       dialogRef.componentInstance.layout = this.getLayout();
       dialogRef.componentInstance.placeholder = this.getPlaceHolder();

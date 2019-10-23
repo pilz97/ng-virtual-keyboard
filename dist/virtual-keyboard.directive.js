@@ -41,6 +41,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             this.opened = true;
             var dialogRef = void 0;
             dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
+            dialogRef.componentInstance.isDialog = true;
             dialogRef.componentInstance.inputElement = this.element;
             dialogRef.componentInstance.layout = this.getLayout();
             dialogRef.componentInstance.placeholder = this.getPlaceHolder();
