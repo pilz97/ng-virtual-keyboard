@@ -39,4 +39,15 @@ import { VirtualKeyboardService } from './virtual-keyboard.service';
 })
 
 export class NgVirtualKeyboardModule {
+  public static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NgVirtualKeyboardModule,
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
+      ],
+    };
+  }
 }
