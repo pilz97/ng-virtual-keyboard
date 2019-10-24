@@ -128,6 +128,11 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    *  3) Reset of possible previously tracked caret position
    */
   public ngOnInit(): void {
+    if (!this.isDialog) {
+      console.log('overwrite keyboard input');
+      this.keyboardInput = new ElementRef(this.inputRef);
+    }
+
     setTimeout(() => {
       this.keyboardInput.nativeElement.focus();
     }, 0);
@@ -154,10 +159,6 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
       }
   
       this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';  
-    }
-    if (!this.isDialog) {
-      console.log('overwrite keyboard input');
-      this.keyboardInput = new ElementRef(this.inputRef);
     }
 
     this.checkDisabled();

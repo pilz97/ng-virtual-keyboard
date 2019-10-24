@@ -48,6 +48,10 @@ var VirtualKeyboardComponent = /** @class */ (function () {
      */
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (!this.isDialog) {
+            console.log('overwrite keyboard input');
+            this.keyboardInput = new core_1.ElementRef(this.inputRef);
+        }
         setTimeout(function () {
             _this.keyboardInput.nativeElement.focus();
         }, 0);
@@ -69,10 +73,6 @@ var VirtualKeyboardComponent = /** @class */ (function () {
                 this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
             }
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
-        }
-        if (!this.isDialog) {
-            console.log('overwrite keyboard input');
-            this.keyboardInput = new core_1.ElementRef(this.inputRef);
         }
         this.checkDisabled();
     };
