@@ -1,15 +1,15 @@
 import { ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { KeyboardLayout } from './layouts';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
 import { KeyPressInterface } from './key-press.interface';
+import { KeyboardLayout } from './layouts';
 export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     dialogRef: MatDialogRef<VirtualKeyboardComponent>;
     private virtualKeyboardService;
     keyboardInput: ElementRef;
     inputElement: ElementRef;
     inputRef: any;
-    layout: KeyboardLayout;
+    layout: KeyboardLayout | string;
     isDialog: boolean;
     placeholder: string;
     type: string;
@@ -43,6 +43,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      */
     private keyboardInputRef;
     ngOnInit(): void;
+    private getLayout;
     private getKeyboardInput;
     /**
      * On destroy life cycle hook, in this we want to reset virtual keyboard service states on following:

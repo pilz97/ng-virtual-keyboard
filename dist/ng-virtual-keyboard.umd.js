@@ -100,8 +100,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var dialog_1 = __webpack_require__(6);
-var layouts_1 = __webpack_require__(2);
 var virtual_keyboard_service_1 = __webpack_require__(4);
+var layouts_1 = __webpack_require__(2);
 var VirtualKeyboardComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -138,8 +138,11 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     };
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (typeof this.layout === 'string' || this.layout instanceof String) {
+            console.log('serach keyboard layout');
+            this.layout = this.getLayout();
+        }
         if (!this.isDialog) {
-            console.log('overwrite keyboard input');
             this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
             this.inputElement = new core_1.ElementRef(this.inputRef);
         }
@@ -166,6 +169,33 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
         }
         this.checkDisabled();
+    };
+    VirtualKeyboardComponent.prototype.getLayout = function () {
+        var layout;
+        switch (this.layout) {
+            case 'alphanumeric':
+                layout = layouts_1.alphanumericKeyboard;
+                break;
+            case 'alphanumericNordic':
+                layout = layouts_1.alphanumericNordicKeyboard;
+                break;
+            case 'extended':
+                layout = layouts_1.extendedKeyboard;
+                break;
+            case 'extendedNordic':
+                layout = layouts_1.extendedNordicKeyboard;
+                break;
+            case 'numeric':
+                layout = layouts_1.numericKeyboard;
+                break;
+            case 'phone':
+                layout = layouts_1.phoneKeyboard;
+                break;
+            default:
+                layout = this.layout;
+                break;
+        }
+        return layout;
     };
     VirtualKeyboardComponent.prototype.getKeyboardInput = function () {
         if (this.isDialog) {
@@ -341,7 +371,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     ], VirtualKeyboardComponent.prototype, "inputRef", void 0);
     __decorate([
         core_1.Input(),
-        __metadata("design:type", Array)
+        __metadata("design:type", Object)
     ], VirtualKeyboardComponent.prototype, "layout", void 0);
     VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
         core_1.Component({

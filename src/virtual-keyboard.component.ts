@@ -1,9 +1,18 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { keyboardCapsLockLayout, KeyboardLayout } from './layouts';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
 import { KeyPressInterface } from './key-press.interface';
+import {
+  keyboardCapsLockLayout,
+  KeyboardLayout,
+  alphanumericKeyboard,
+  alphanumericNordicKeyboard,
+  extendedKeyboard,
+  extendedNordicKeyboard,
+  numericKeyboard,
+  phoneKeyboard
+} from './layouts';
 
 @Component({
   selector: 'virtual-keyboard',
@@ -71,7 +80,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
 
   public inputElement: ElementRef;
   @Input() inputRef: any;
-  @Input() layout: KeyboardLayout;
+  @Input() layout: KeyboardLayout | string;
   public isDialog: boolean = false;
   public placeholder: string;
   public type: string;
@@ -129,8 +138,12 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    */
   private keyboardInputRef: ElementRef;
   public ngOnInit(): void {
+    if (typeof this.layout === 'string' || this.layout instanceof String) {
+      console.log('serach keyboard layout');
+      this.layout = this.getLayout();
+    }
+
     if (!this.isDialog) {
-      console.log('overwrite keyboard input');
       this.keyboardInputRef = new ElementRef(this.inputRef);
       this.inputElement = new ElementRef(this.inputRef);
     }
@@ -144,7 +157,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     });
 
     this.virtualKeyboardService.capsLock$.subscribe((capsLock: boolean) => {
-      this.layout = keyboardCapsLockLayout(this.layout, capsLock);
+      this.layout = keyboardCapsLockLayout(<KeyboardLayout>this.layout, capsLock);
     });
 
     this.virtualKeyboardService.caretPosition$.subscribe((caretPosition: number) => {
@@ -164,6 +177,36 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     }
 
     this.checkDisabled();
+  }
+
+  private getLayout(): KeyboardLayout {
+    let layout;
+
+    switch (this.layout) {
+      case 'alphanumeric':
+        layout = alphanumericKeyboard;
+        break;
+      case 'alphanumericNordic':
+        layout = alphanumericNordicKeyboard;
+        break;
+      case 'extended':
+        layout = extendedKeyboard;
+        break;
+      case 'extendedNordic':
+        layout = extendedNordicKeyboard;
+        break;
+      case 'numeric':
+        layout = numericKeyboard;
+        break;
+      case 'phone':
+        layout = phoneKeyboard;
+        break;
+      default:
+        layout = this.layout;
+        break;
+    }
+
+    return layout;
   }
 
   private getKeyboardInput(): ElementRef {

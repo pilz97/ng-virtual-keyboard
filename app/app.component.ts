@@ -46,7 +46,7 @@ export class AppComponent {
       placeholderCustom: 'custom placeholder 6',
     },
   ];
-  priceKeyboardLayout = [
+  customLayoutTest = [
     [
       '1',
       '2',
@@ -63,7 +63,7 @@ export class AppComponent {
       '9',
     ],
     [
-      ',',
+      '',
       '0',
       'Backspace',
 
