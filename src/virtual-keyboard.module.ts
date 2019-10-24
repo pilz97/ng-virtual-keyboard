@@ -1,7 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatDialogRef } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgVirtualKeyboardDirective } from './virtual-keyboard.directive';
@@ -38,12 +39,4 @@ import { VirtualKeyboardService } from './virtual-keyboard.service';
 })
 
 export class NgVirtualKeyboardModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: NgVirtualKeyboardModule,
-      providers: [
-        { provide: MatDialogRef, useValue: {} },
-      ],
-    };
-  }
 }

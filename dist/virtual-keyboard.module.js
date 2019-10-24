@@ -4,6 +4,7 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var material_1 = require("@angular/material");
+var dialog_1 = require("@angular/material/dialog");
 var flex_layout_1 = require("@angular/flex-layout");
 var virtual_keyboard_directive_1 = require("./virtual-keyboard.directive");
 var virtual_keyboard_component_1 = require("./virtual-keyboard.component");
@@ -12,14 +13,6 @@ var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
 var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
-    NgVirtualKeyboardModule.forRoot = function () {
-        return {
-            ngModule: NgVirtualKeyboardModule,
-            providers: [
-                { provide: material_1.MatDialogRef, useValue: {} },
-            ],
-        };
-    };
     NgVirtualKeyboardModule.decorators = [
         { type: core_1.NgModule, args: [{
                     declarations: [
@@ -36,7 +29,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                         forms_1.ReactiveFormsModule,
                         flex_layout_1.FlexLayoutModule,
                         material_1.MatButtonModule,
-                        material_1.MatDialogModule,
+                        dialog_1.MatDialogModule,
                         material_1.MatIconModule,
                         material_1.MatInputModule,
                     ],

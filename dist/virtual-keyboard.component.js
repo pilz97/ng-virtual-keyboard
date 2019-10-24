@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var material_1 = require("@angular/material");
+var dialog_1 = require("@angular/material/dialog");
 var layouts_1 = require("./layouts");
 var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
 var VirtualKeyboardComponent = /** @class */ (function () {
@@ -240,7 +240,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     ];
     /** @nocollapse */
     VirtualKeyboardComponent.ctorParameters = function () { return [
-        { type: material_1.MatDialogRef },
+        { type: dialog_1.MatDialogRef },
         { type: virtual_keyboard_service_1.VirtualKeyboardService }
     ]; };
     VirtualKeyboardComponent.propDecorators = {
