@@ -41,7 +41,9 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      *    2.3) Caret position in virtual keyboard input
      *  3) Reset of possible previously tracked caret position
      */
+    private keyboardInputRef;
     ngOnInit(): void;
+    private getKeyboardInput;
     /**
      * On destroy life cycle hook, in this we want to reset virtual keyboard service states on following:
      *  - Shift

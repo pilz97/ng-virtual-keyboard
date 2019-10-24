@@ -16,7 +16,7 @@ import 'hammerjs';
 import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 //noinspection TypeScriptCheckImport
-import { NgVirtualKeyboardModule }  from '@protacon/ng-virtual-keyboard';
+import { NgVirtualKeyboardModule }  from '../dist';
 
 import { AppComponent } from './app.component';
 

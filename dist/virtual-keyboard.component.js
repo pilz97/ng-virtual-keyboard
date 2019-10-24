@@ -37,23 +37,14 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             range.select();
         }
     };
-    /**
-     * On init life cycle hook, this will do following:
-     *  1) Set focus to virtual keyboard input field
-     *  2) Subscribe to following
-     *    2.1) Shift key, this is needed in keyboard event dispatches
-     *    2.2) CapsLock key, this will change keyboard layout
-     *    2.3) Caret position in virtual keyboard input
-     *  3) Reset of possible previously tracked caret position
-     */
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (!this.isDialog) {
             console.log('overwrite keyboard input');
-            this.keyboardInput = new core_1.ElementRef(this.inputRef);
+            this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
         }
         setTimeout(function () {
-            _this.keyboardInput.nativeElement.focus();
+            _this.getKeyboardInput().nativeElement.focus();
         }, 0);
         this.virtualKeyboardService.shift$.subscribe(function (shift) {
             _this.shift = shift;
@@ -64,7 +55,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         this.virtualKeyboardService.caretPosition$.subscribe(function (caretPosition) {
             _this.caretPosition = caretPosition;
             setTimeout(function () {
-                VirtualKeyboardComponent.setSelectionRange(_this.keyboardInput.nativeElement, caretPosition, caretPosition);
+                VirtualKeyboardComponent.setSelectionRange(_this.getKeyboardInput().nativeElement, caretPosition, caretPosition);
             }, 0);
         });
         this.maxLength = '';
@@ -75,6 +66,12 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
         }
         this.checkDisabled();
+    };
+    VirtualKeyboardComponent.prototype.getKeyboardInput = function () {
+        if (this.isDialog) {
+            return this.keyboardInput;
+        }
+        return this.keyboardInputRef;
     };
     /**
      * On destroy life cycle hook, in this we want to reset virtual keyboard service states on following:
@@ -94,7 +91,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
      * Method to update caret position. This is called on click event in virtual keyboard input element.
      */
     VirtualKeyboardComponent.prototype.updateCaretPosition = function () {
-        this.virtualKeyboardService.setCaretPosition(this.keyboardInput.nativeElement.selectionStart);
+        this.virtualKeyboardService.setCaretPosition(this.getKeyboardInput().nativeElement.selectionStart);
     };
     /**
      * Method to handle actual "key" press from virtual keyboard.
@@ -192,7 +189,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
                     this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
                 }
                 // Set focus to keyboard input
-                this.keyboardInput.nativeElement.focus();
+                this.getKeyboardInput().nativeElement.focus();
                 break;
             case 'CapsLock':
                 this.virtualKeyboardService.toggleCapsLock();
@@ -229,7 +226,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             this.inputElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', eventInit));
         }
         // And set focus to input
-        this.keyboardInput.nativeElement.focus();
+        this.getKeyboardInput().nativeElement.focus();
     };
     VirtualKeyboardComponent.decorators = [
         { type: core_1.Component, args: [{

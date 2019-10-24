@@ -46,6 +46,28 @@ export class AppComponent {
       placeholderCustom: 'custom placeholder 6',
     },
   ];
+  priceKeyboardLayout = [
+    [
+      '1',
+      '2',
+      '3',
+    ],
+    [
+      '4',
+      '5',
+      '6',
+    ],
+    [
+      '7',
+      '8',
+      '9',
+    ],
+    [
+      'Backspace',
+      '0',
+      ',',
+    ],
+  ];
 
   public badges = [
     {
@@ -80,6 +102,7 @@ export class AppComponent {
   ];
 
   public invalid = false;
+  test: string = 'test text';
 
   get customLayoutValue() {
     return JSON.stringify(this.customLayout, null, 2);

@@ -13,7 +13,7 @@
     "build:ngc": "ngc -p tsconfig.ngc.json",
     "build:umd": "NODE_ENV=prod webpack --progress --profile",
     "build:app": "NODE_ENV=prod webpack --progress --profile --config app/webpack.config",
-    "build:gh-pages": "cp app/index.html docs && cp app/favicon.png docs && cp -r app/build docs"
+    "build:gh-pages": "copy app/index.html docs && copy app/favicon.png docs && copy -r app/build docs"
   },
   "repository": {
     "type": "git",
