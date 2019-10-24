@@ -10,20 +10,11 @@ var virtual_keyboard_directive_1 = require("./virtual-keyboard.directive");
 var virtual_keyboard_component_1 = require("./virtual-keyboard.component");
 var virtual_keyboard_key_component_1 = require("./virtual-keyboard-key.component");
 var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
+var ɵ0 = {};
+exports.ɵ0 = ɵ0;
 var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
-    NgVirtualKeyboardModule.forRoot = function () {
-        return {
-            ngModule: NgVirtualKeyboardModule,
-            providers: [
-                {
-                    provide: dialog_1.MatDialogRef,
-                    useValue: {}
-                },
-            ],
-        };
-    };
     NgVirtualKeyboardModule.decorators = [
         { type: core_1.NgModule, args: [{
                     declarations: [
@@ -33,6 +24,10 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                     ],
                     providers: [
                         virtual_keyboard_service_1.VirtualKeyboardService,
+                        {
+                            provide: dialog_1.MatDialogRef,
+                            useValue: ɵ0
+                        }
                     ],
                     imports: [
                         common_1.CommonModule,
