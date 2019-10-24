@@ -42,6 +42,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         if (!this.isDialog) {
             console.log('overwrite keyboard input');
             this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
+            this.inputElement = new core_1.ElementRef(this.inputRef);
         }
         setTimeout(function () {
             _this.getKeyboardInput().nativeElement.focus();
@@ -173,20 +174,22 @@ var VirtualKeyboardComponent = /** @class */ (function () {
                 this.close();
                 break;
             case 'Backspace':
-                var currentValue = this.inputElement.nativeElement.value;
-                // We have a caret position, so we need to remove char from that position
-                if (!isNaN(this.caretPosition)) {
-                    // And current position must > 0
-                    if (this.caretPosition > 0) {
-                        var start = currentValue.slice(0, this.caretPosition - 1);
-                        var end = currentValue.slice(this.caretPosition);
-                        this.inputElement.nativeElement.value = "" + start + end;
-                        // Update caret position
-                        this.virtualKeyboardService.setCaretPosition(this.caretPosition - 1);
+                if (this.isDialog) {
+                    var currentValue = this.inputElement.nativeElement.value;
+                    // We have a caret position, so we need to remove char from that position
+                    if (!isNaN(this.caretPosition)) {
+                        // And current position must > 0
+                        if (this.caretPosition > 0) {
+                            var start = currentValue.slice(0, this.caretPosition - 1);
+                            var end = currentValue.slice(this.caretPosition);
+                            this.inputElement.nativeElement.value = "" + start + end;
+                            // Update caret position
+                            this.virtualKeyboardService.setCaretPosition(this.caretPosition - 1);
+                        }
                     }
-                }
-                else {
-                    this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
+                    else {
+                        this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
+                    }
                 }
                 // Set focus to keyboard input
                 this.getKeyboardInput().nativeElement.focus();

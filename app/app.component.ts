@@ -63,9 +63,10 @@ export class AppComponent {
       '9',
     ],
     [
-      'Backspace',
-      '0',
       ',',
+      '0',
+      'Backspace',
+
     ],
   ];
 

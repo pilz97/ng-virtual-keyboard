@@ -62,9 +62,9 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
 
     <div fxLayout="column wrap">
       <h2>Demos</h2>
-      <div fxLayout="column">
-          <input #articlePriceInput [value]="test" >
-          <virtual-keyboard [layout]="'priceKeyboardLayout'" [inputRef]="articlePriceInput"></virtual-keyboard>
+      <div fxLayout="column" >
+          <input #articlePriceInput [value]="test">
+          <virtual-keyboard [layout]="priceKeyboardLayout" [inputRef]="articlePriceInput"></virtual-keyboard>
       </div>
 
       <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around center">

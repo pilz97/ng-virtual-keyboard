@@ -132,6 +132,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     if (!this.isDialog) {
       console.log('overwrite keyboard input');
       this.keyboardInputRef = new ElementRef(this.inputRef);
+      this.inputElement = new ElementRef(this.inputRef);
     }
 
     setTimeout(() => {
@@ -285,24 +286,26 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
         this.close();
         break;
       case 'Backspace':
-        const currentValue = this.inputElement.nativeElement.value;
+        if (this.isDialog) {
 
-        // We have a caret position, so we need to remove char from that position
-        if (!isNaN(this.caretPosition)) {
-          // And current position must > 0
-          if (this.caretPosition > 0) {
-            const start = currentValue.slice(0, this.caretPosition - 1);
-            const end = currentValue.slice(this.caretPosition);
+          const currentValue = this.inputElement.nativeElement.value;
 
-            this.inputElement.nativeElement.value = `${start}${end}`;
+          // We have a caret position, so we need to remove char from that position
+          if (!isNaN(this.caretPosition)) {
+            // And current position must > 0
+            if (this.caretPosition > 0) {
+              const start = currentValue.slice(0, this.caretPosition - 1);
+              const end = currentValue.slice(this.caretPosition);
 
-            // Update caret position
-            this.virtualKeyboardService.setCaretPosition(this.caretPosition - 1);
+              this.inputElement.nativeElement.value = `${start}${end}`;
+
+              // Update caret position
+              this.virtualKeyboardService.setCaretPosition(this.caretPosition - 1);
+            }
+          } else {
+            this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
           }
-        } else {
-          this.inputElement.nativeElement.value = currentValue.substring(0, currentValue.length - 1);
         }
-
         // Set focus to keyboard input
         this.getKeyboardInput().nativeElement.focus();
         break;
