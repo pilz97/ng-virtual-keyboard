@@ -39,7 +39,11 @@ Simple usage example
   ng-virtual-keyboard-placeholder="Custom placeholder text"
 />
 ```
-
+Instead of opening the dialog you can use it as an onscreen keyboard
+```html
+  <input type="number" [(ngModel)]="text" #inputField/>
+  <virtual-keyboard layout="numeric" [inputRef]="inputField"></virtual-keyboard>
+```
 | Attribute | Description |
 | --- | --- |
 | `ng-virtual-keyboard`             | Required to initialize Virtual Keyboard to specified input |
