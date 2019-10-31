@@ -9,6 +9,7 @@
     "start": "NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host 127.0.0.1 --content-base app --config app/webpack.config --open",
     "lint": "tslint 'src/**/*.ts' 'app/**/*.ts'",
     "clean": "rimraf dist",
+    "prepare": "npm-run-all --serial clean build:ngc build:umd build:app",
     "build": "npm-run-all --serial clean build:ngc build:umd build:app build:gh-pages",
     "build:ngc": "ngc -p tsconfig.ngc.json",
     "build:umd": "NODE_ENV=prod webpack --progress --profile",
