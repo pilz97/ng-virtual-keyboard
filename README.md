@@ -42,7 +42,7 @@ Simple usage example
 Instead of opening the dialog you can use it as an onscreen keyboard
 ```html
   <input type="number" [(ngModel)]="text" #inputField/>
-  <virtual-keyboard [layout]="numeric" [inputRef]="inputField"></virtual-keyboard>
+  <virtual-keyboard layout="numeric" [inputRef]="inputField"></virtual-keyboard>
 ```
 | Attribute | Description |
 | --- | --- |
