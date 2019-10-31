@@ -146,7 +146,6 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     if (!this.isDialog) {
       this.keyboardInputRef = new ElementRef(this.inputRef);
       this.inputElement = new ElementRef(this.inputRef);
-      console.log(this.inputElement);
       this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
     }
 

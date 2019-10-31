@@ -145,7 +145,6 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         if (!this.isDialog) {
             this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
             this.inputElement = new core_1.ElementRef(this.inputRef);
-            console.log(this.inputElement);
             this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
         }
         setTimeout(function () {
