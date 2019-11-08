@@ -7,8 +7,6 @@ import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKe
   selector: 'virtual-keyboard-key',
   template: `
     <button
-      mat-raised-button
-      color="primary"
       fxFlex="{{ flexValue }}"
       [class.spacer]="spacer"
       [disabled]="isDisabled()"
