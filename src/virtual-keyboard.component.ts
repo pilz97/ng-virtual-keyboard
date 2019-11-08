@@ -20,7 +20,7 @@ import {
     <div class="container">
       <div fxLayout="column">
         <mat-form-field *ngIf="isDialog">
-          <button class="close" color="primary" mat-button mat-mini-fab
+          <button class="close"
             (click)="close()"
           >
             <mat-icon>check</mat-icon>

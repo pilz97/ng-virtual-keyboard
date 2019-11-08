@@ -375,7 +375,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
         core_1.Component({
             selector: 'virtual-keyboard',
-            template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field *ngIf=\"isDialog\">\n          <button class=\"close\" color=\"primary\" mat-button mat-mini-fab\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+            template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field *ngIf=\"isDialog\">\n          <button class=\"close\"\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\"\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
             styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
         }),
         __metadata("design:paramtypes", [dialog_1.MatDialogRef,
@@ -414,7 +414,7 @@ exports.extendedKeyboard = [
 ];
 exports.extendedNordicKeyboard = [
     ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', 'Backspace:2'],
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'Enter:2'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
     ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', 'Spacer:2'],
     ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:3'],
@@ -921,6 +921,12 @@ var VirtualKeyboardKeyComponent = /** @class */ (function () {
     VirtualKeyboardKeyComponent.prototype.onKeyPress = function () {
         this.keyPress.emit({ special: this.special, keyValue: this.keyValue, key: this.key });
     };
+    VirtualKeyboardKeyComponent.prototype.getClass = function () {
+        if (this.spacer) {
+            return 'empty-key';
+        }
+        return '';
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", String)
@@ -936,8 +942,8 @@ var VirtualKeyboardKeyComponent = /** @class */ (function () {
     VirtualKeyboardKeyComponent = __decorate([
         core_1.Component({
             selector: 'virtual-keyboard-key',
-            template: "\n    <button\n      mat-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <mat-icon *ngIf=\"icon\">{{ icon }}</mat-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
-            styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n  "]
+            template: "\n    <button\n      mat-raised-button\n      color=\"primary\"\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      [class]=\"getClass()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <mat-icon *ngIf=\"icon\">{{ icon }}</mat-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
+            styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n\n    .empty-key {\n      border: none;\n      background: none;\n    }\n  "]
         }),
         __metadata("design:paramtypes", [])
     ], VirtualKeyboardKeyComponent);

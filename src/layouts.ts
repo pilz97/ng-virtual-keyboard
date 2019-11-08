@@ -24,7 +24,7 @@ export const extendedKeyboard: KeyboardLayout = [
 
 export const extendedNordicKeyboard: KeyboardLayout = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', 'Backspace:2'],
-  ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'CapsLock:2'],
+  ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'å', 'Enter:2'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', 'Shift:2'],
   ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-', '_', 'Spacer:2'],
   ['Spacer', '@', 'SpaceBar:7', '#', 'Spacer:3'],

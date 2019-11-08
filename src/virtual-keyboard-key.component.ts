@@ -12,6 +12,7 @@ import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKe
       fxFlex="{{ flexValue }}"
       [class.spacer]="spacer"
       [disabled]="isDisabled()"
+      [class]="getClass()"
       (click)="onKeyPress()"
     >
       <span *ngIf="!special">{{ keyValue }}</span>
@@ -39,6 +40,11 @@ import { isSpacer, isSpecial, notDisabledSpecialKeys, specialKeyIcons, specialKe
     .mat-icon-button.spacer,
     .mat-raised-button.spacer {
       background-color: transparent;
+    }
+
+    .empty-key {
+      border: none;
+      background: none;
     }
   `]
 })
@@ -119,5 +125,12 @@ export class VirtualKeyboardKeyComponent implements OnInit {
    */
   public onKeyPress(): void {
     this.keyPress.emit({special: this.special, keyValue: this.keyValue, key: this.key});
+  }
+
+  public getClass() {
+    if (this.spacer) {
+      return 'empty-key';
+    }
+    return '';
   }
 }

@@ -33,4 +33,5 @@ export declare class VirtualKeyboardKeyComponent implements OnInit {
      *  2) Key is "Normal", append this key value to input
      */
     onKeyPress(): void;
+    getClass(): "" | "empty-key";
 }
