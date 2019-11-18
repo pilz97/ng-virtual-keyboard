@@ -68,7 +68,7 @@ var VirtualKeyboardKeyComponent = /** @class */ (function () {
         this.keyPress.emit({ special: this.special, keyValue: this.keyValue, key: this.key });
     };
     VirtualKeyboardKeyComponent.prototype.getClass = function () {
-        if (this.spacer) {
+        if (this.spacer || this.keyValue === '') {
             return 'empty-key';
         }
         return '';

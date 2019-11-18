@@ -30,7 +30,7 @@ exports.numericKeyboard = [
     ['1', '2', '3', 'Backspace:2'],
     ['4', '5', '6', 'Spacer:2'],
     ['7', '8', '9', 'Spacer:2'],
-    ['Spacer', '0', 'Spacer:3'],
+    ['', '0', '', 'Spacer:2'],
 ];
 exports.phoneKeyboard = [
     ['1', '2', '3', 'Backspace:2'],

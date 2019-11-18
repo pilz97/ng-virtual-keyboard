@@ -126,7 +126,7 @@ export class VirtualKeyboardKeyComponent implements OnInit {
   }
 
   public getClass() {
-    if (this.spacer) {
+    if (this.spacer || this.keyValue === '') {
       return 'empty-key';
     }
     return '';
