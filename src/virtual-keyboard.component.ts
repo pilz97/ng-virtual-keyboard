@@ -31,7 +31,7 @@ import {
             #keyboardInput
             (click)="updateCaretPosition()"
             [(ngModel)]="inputElement.nativeElement.value" placeholder="{{ placeholder }}"
-            [maxLength]="maxLength"
+            [maxLength]="maxLength" autofocus
           />
         </mat-form-field>
     
@@ -151,7 +151,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       this.getKeyboardInput().nativeElement.focus();
-    }, 0);
+    }, 500);
 
     this.virtualKeyboardService.shift$.subscribe((shift: boolean) => {
       this.shift = shift;
