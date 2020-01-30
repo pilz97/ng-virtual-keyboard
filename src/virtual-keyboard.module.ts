@@ -9,12 +9,14 @@ import { NgVirtualKeyboardDirective } from './virtual-keyboard.directive';
 import { VirtualKeyboardComponent } from './virtual-keyboard.component';
 import { VirtualKeyboardKeyComponent } from './virtual-keyboard-key.component';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
+import { NgVirtualOnScreenKeyboardDirective } from './virtual-onscreen-keyboard.directive';
 
 @NgModule({
   declarations: [
     NgVirtualKeyboardDirective,
     VirtualKeyboardComponent,
     VirtualKeyboardKeyComponent,
+    NgVirtualOnScreenKeyboardDirective,
   ],
   providers: [
     VirtualKeyboardService,
@@ -38,6 +40,7 @@ import { VirtualKeyboardService } from './virtual-keyboard.service';
   ],
   exports: [
     NgVirtualKeyboardDirective,
+    NgVirtualOnScreenKeyboardDirective,
     VirtualKeyboardComponent,
   ]
 })

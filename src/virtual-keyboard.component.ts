@@ -139,16 +139,21 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   private keyboardInputRef: ElementRef;
   public ngOnInit(): void {
     if (typeof this.layout === 'string' || this.layout instanceof String) {
-      console.log('serach keyboard layout');
       this.layout = this.getLayout();
     }
 
-    if (!this.isDialog) {
+    if (!this.inputRef && !this.isDialog) {
+      return;
+    }
+    else if (!this.isDialog) {
       this.keyboardInputRef = new ElementRef(this.inputRef);
       this.inputElement = new ElementRef(this.inputRef);
       this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
     }
+    this.doInit();    
+  }
 
+  private doInit() {
     setTimeout(() => {
       this.getKeyboardInput().nativeElement.focus();
     }, 500);
@@ -178,6 +183,26 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     }
 
     this.checkDisabled();
+  }
+
+  private keyWasPressed: boolean = false;
+  getKeyWasPressed(): boolean {
+    return this.keyWasPressed;
+  }
+
+  setKeyWasPressed(value: boolean) {
+    this.keyWasPressed = value;
+  }
+
+  setInputRef(ref) {
+    if (!!this.inputElement) {
+      this.inputElement.nativeElement.removeEventListener('click', this.updateCaretPosition.bind(this));
+    }
+    this.keyboardInputRef = new ElementRef(ref);
+    this.inputElement = new ElementRef(ref);
+    this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
+
+    this.doInit();    
   }
 
   private getLayout(): KeyboardLayout {
@@ -251,6 +276,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    * @param {KeyPressInterface} event
    */
   public keyPress(event: KeyPressInterface): void {
+    this.keyWasPressed = true;
     if (event.special) {
       this.handleSpecialKey(event);
     } else {

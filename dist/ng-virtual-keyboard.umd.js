@@ -7,7 +7,7 @@
 		exports["ng-virtual-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else
 		root["ng-virtual-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/material/dialog"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/internal/ReplaySubject"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__, __WEBPACK_EXTERNAL_MODULE_14__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -99,8 +99,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var dialog_1 = __webpack_require__(6);
-var virtual_keyboard_service_1 = __webpack_require__(4);
+var dialog_1 = __webpack_require__(7);
+var virtual_keyboard_service_1 = __webpack_require__(6);
 var layouts_1 = __webpack_require__(2);
 var VirtualKeyboardComponent = /** @class */ (function () {
     /**
@@ -114,6 +114,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         this.virtualKeyboardService = virtualKeyboardService;
         this.isDialog = false;
         this.shift = false;
+        this.keyWasPressed = false;
     }
     VirtualKeyboardComponent_1 = VirtualKeyboardComponent;
     /**
@@ -137,16 +138,21 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         }
     };
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
-        var _this = this;
         if (typeof this.layout === 'string' || this.layout instanceof String) {
-            console.log('serach keyboard layout');
             this.layout = this.getLayout();
         }
-        if (!this.isDialog) {
+        if (!this.inputRef && !this.isDialog) {
+            return;
+        }
+        else if (!this.isDialog) {
             this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
             this.inputElement = new core_1.ElementRef(this.inputRef);
             this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
         }
+        this.doInit();
+    };
+    VirtualKeyboardComponent.prototype.doInit = function () {
+        var _this = this;
         setTimeout(function () {
             _this.getKeyboardInput().nativeElement.focus();
         }, 500);
@@ -170,6 +176,21 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
         }
         this.checkDisabled();
+    };
+    VirtualKeyboardComponent.prototype.getKeyWasPressed = function () {
+        return this.keyWasPressed;
+    };
+    VirtualKeyboardComponent.prototype.setKeyWasPressed = function (value) {
+        this.keyWasPressed = value;
+    };
+    VirtualKeyboardComponent.prototype.setInputRef = function (ref) {
+        if (!!this.inputElement) {
+            this.inputElement.nativeElement.removeEventListener('click', this.updateCaretPosition.bind(this));
+        }
+        this.keyboardInputRef = new core_1.ElementRef(ref);
+        this.inputElement = new core_1.ElementRef(ref);
+        this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
+        this.doInit();
     };
     VirtualKeyboardComponent.prototype.getLayout = function () {
         var layout;
@@ -235,6 +256,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
      * @param {KeyPressInterface} event
      */
     VirtualKeyboardComponent.prototype.keyPress = function (event) {
+        this.keyWasPressed = true;
         if (event.special) {
             this.handleSpecialKey(event);
         }
@@ -503,6 +525,12 @@ exports.keyboardCapsLockLayout = keyboardCapsLockLayout;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -518,7 +546,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var material_1 = __webpack_require__(5);
+var material_1 = __webpack_require__(3);
 var virtual_keyboard_component_1 = __webpack_require__(1);
 var layouts_1 = __webpack_require__(2);
 var NgVirtualKeyboardDirective = /** @class */ (function () {
@@ -669,7 +697,64 @@ exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var material_1 = __webpack_require__(3);
+var virtual_keyboard_component_1 = __webpack_require__(1);
+var NgVirtualOnScreenKeyboardDirective = /** @class */ (function () {
+    function NgVirtualOnScreenKeyboardDirective(element, dialog) {
+        this.element = element;
+        this.dialog = dialog;
+        this.opened = false;
+        this.focus = true;
+        this.inputRefSet = false;
+    }
+    NgVirtualOnScreenKeyboardDirective.prototype.onFocus = function () {
+        if (this.virtualKeyboardRef.getKeyWasPressed()) {
+            this.virtualKeyboardRef.setKeyWasPressed(false);
+            return;
+        }
+        this.inputRefSet = true;
+        this.virtualKeyboardRef.setInputRef(this.element.nativeElement);
+    };
+    __decorate([
+        core_1.Input('ng-virtual-onscreen-keyboard'),
+        __metadata("design:type", virtual_keyboard_component_1.VirtualKeyboardComponent)
+    ], NgVirtualOnScreenKeyboardDirective.prototype, "virtualKeyboardRef", void 0);
+    __decorate([
+        core_1.HostListener('focus'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NgVirtualOnScreenKeyboardDirective.prototype, "onFocus", null);
+    NgVirtualOnScreenKeyboardDirective = __decorate([
+        core_1.Directive({
+            selector: '[ng-virtual-onscreen-keyboard]'
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            material_1.MatDialog])
+    ], NgVirtualOnScreenKeyboardDirective);
+    return NgVirtualOnScreenKeyboardDirective;
+}());
+exports.NgVirtualOnScreenKeyboardDirective = NgVirtualOnScreenKeyboardDirective;
+
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -682,7 +767,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var ReplaySubject_1 = __webpack_require__(13);
+var ReplaySubject_1 = __webpack_require__(14);
 var VirtualKeyboardService = /** @class */ (function () {
     function VirtualKeyboardService() {
         this.shift$ = new ReplaySubject_1.ReplaySubject(1);
@@ -748,19 +833,13 @@ exports.VirtualKeyboardService = VirtualKeyboardService;
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
-
-/***/ }),
 /* 7 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -773,15 +852,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var common_1 = __webpack_require__(10);
-var forms_1 = __webpack_require__(12);
-var material_1 = __webpack_require__(5);
-var dialog_1 = __webpack_require__(6);
-var flex_layout_1 = __webpack_require__(11);
-var virtual_keyboard_directive_1 = __webpack_require__(3);
+var common_1 = __webpack_require__(11);
+var forms_1 = __webpack_require__(13);
+var material_1 = __webpack_require__(3);
+var dialog_1 = __webpack_require__(7);
+var flex_layout_1 = __webpack_require__(12);
+var virtual_keyboard_directive_1 = __webpack_require__(4);
 var virtual_keyboard_component_1 = __webpack_require__(1);
-var virtual_keyboard_key_component_1 = __webpack_require__(9);
-var virtual_keyboard_service_1 = __webpack_require__(4);
+var virtual_keyboard_key_component_1 = __webpack_require__(10);
+var virtual_keyboard_service_1 = __webpack_require__(6);
+var virtual_onscreen_keyboard_directive_1 = __webpack_require__(5);
 var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
@@ -791,6 +871,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                 virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
                 virtual_keyboard_component_1.VirtualKeyboardComponent,
                 virtual_keyboard_key_component_1.VirtualKeyboardKeyComponent,
+                virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective,
             ],
             providers: [
                 virtual_keyboard_service_1.VirtualKeyboardService,
@@ -814,6 +895,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
             ],
             exports: [
                 virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
+                virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective,
                 virtual_keyboard_component_1.VirtualKeyboardComponent,
             ]
         })
@@ -824,22 +906,24 @@ exports.NgVirtualKeyboardModule = NgVirtualKeyboardModule;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var virtual_keyboard_directive_1 = __webpack_require__(3);
+var virtual_keyboard_directive_1 = __webpack_require__(4);
 exports.NgVirtualKeyboardDirective = virtual_keyboard_directive_1.NgVirtualKeyboardDirective;
-var virtual_keyboard_module_1 = __webpack_require__(7);
+var virtual_onscreen_keyboard_directive_1 = __webpack_require__(5);
+exports.NgVirtualOnScreenKeyboardDirective = virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective;
+var virtual_keyboard_module_1 = __webpack_require__(8);
 exports.NgVirtualKeyboardModule = virtual_keyboard_module_1.NgVirtualKeyboardModule;
 var virtual_keyboard_component_1 = __webpack_require__(1);
 exports.VirtualKeyboardComponent = virtual_keyboard_component_1.VirtualKeyboardComponent;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,12 +1037,6 @@ exports.VirtualKeyboardKeyComponent = VirtualKeyboardKeyComponent;
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -975,6 +1053,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_12__;
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_13__;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_14__;
 
 /***/ })
 /******/ ]);

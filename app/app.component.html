@@ -63,8 +63,9 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
     <div fxLayout="column wrap">
       <h2>Demos</h2>
       <div fxLayout="column" >
-          <input #testInput [value]="test">
-          <virtual-keyboard [layout]="customLayoutTest" [inputRef]="testInput"></virtual-keyboard>
+          <input #testInput [ng-virtual-onscreen-keyboard]="keyboardRef" [value]="test">
+          <input #testInput2 [ng-virtual-onscreen-keyboard]="keyboardRef" [value]="123">
+          <virtual-keyboard #keyboardRef [layout]="customLayoutTest"></virtual-keyboard>
       </div>
 
       <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-around center">

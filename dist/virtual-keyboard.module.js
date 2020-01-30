@@ -10,6 +10,7 @@ var virtual_keyboard_directive_1 = require("./virtual-keyboard.directive");
 var virtual_keyboard_component_1 = require("./virtual-keyboard.component");
 var virtual_keyboard_key_component_1 = require("./virtual-keyboard-key.component");
 var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
+var virtual_onscreen_keyboard_directive_1 = require("./virtual-onscreen-keyboard.directive");
 var ɵ0 = {};
 exports.ɵ0 = ɵ0;
 var NgVirtualKeyboardModule = /** @class */ (function () {
@@ -21,6 +22,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                         virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
                         virtual_keyboard_component_1.VirtualKeyboardComponent,
                         virtual_keyboard_key_component_1.VirtualKeyboardKeyComponent,
+                        virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective,
                     ],
                     providers: [
                         virtual_keyboard_service_1.VirtualKeyboardService,
@@ -44,6 +46,7 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                     ],
                     exports: [
                         virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
+                        virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective,
                         virtual_keyboard_component_1.VirtualKeyboardComponent,
                     ]
                 },] },

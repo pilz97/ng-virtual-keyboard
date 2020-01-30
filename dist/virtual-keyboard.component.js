@@ -16,6 +16,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         this.virtualKeyboardService = virtualKeyboardService;
         this.isDialog = false;
         this.shift = false;
+        this.keyWasPressed = false;
     }
     /**
      * Helper method to set cursor in input to correct place.
@@ -38,16 +39,21 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         }
     };
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
-        var _this = this;
         if (typeof this.layout === 'string' || this.layout instanceof String) {
-            console.log('serach keyboard layout');
             this.layout = this.getLayout();
         }
-        if (!this.isDialog) {
+        if (!this.inputRef && !this.isDialog) {
+            return;
+        }
+        else if (!this.isDialog) {
             this.keyboardInputRef = new core_1.ElementRef(this.inputRef);
             this.inputElement = new core_1.ElementRef(this.inputRef);
             this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
         }
+        this.doInit();
+    };
+    VirtualKeyboardComponent.prototype.doInit = function () {
+        var _this = this;
         setTimeout(function () {
             _this.getKeyboardInput().nativeElement.focus();
         }, 500);
@@ -71,6 +77,21 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
         }
         this.checkDisabled();
+    };
+    VirtualKeyboardComponent.prototype.getKeyWasPressed = function () {
+        return this.keyWasPressed;
+    };
+    VirtualKeyboardComponent.prototype.setKeyWasPressed = function (value) {
+        this.keyWasPressed = value;
+    };
+    VirtualKeyboardComponent.prototype.setInputRef = function (ref) {
+        if (!!this.inputElement) {
+            this.inputElement.nativeElement.removeEventListener('click', this.updateCaretPosition.bind(this));
+        }
+        this.keyboardInputRef = new core_1.ElementRef(ref);
+        this.inputElement = new core_1.ElementRef(ref);
+        this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
+        this.doInit();
     };
     VirtualKeyboardComponent.prototype.getLayout = function () {
         var layout;
@@ -136,6 +157,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
      * @param {KeyPressInterface} event
      */
     VirtualKeyboardComponent.prototype.keyPress = function (event) {
+        this.keyWasPressed = true;
         if (event.special) {
             this.handleSpecialKey(event);
         }
