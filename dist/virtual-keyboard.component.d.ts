@@ -9,6 +9,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     keyboardInput: ElementRef;
     inputElement: ElementRef;
     inputRef: any;
+    selectContent: boolean;
     layout: KeyboardLayout | string;
     isDialog: boolean;
     placeholder: string;

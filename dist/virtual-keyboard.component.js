@@ -14,6 +14,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     function VirtualKeyboardComponent(dialogRef, virtualKeyboardService) {
         this.dialogRef = dialogRef;
         this.virtualKeyboardService = virtualKeyboardService;
+        this.selectContent = false;
         this.isDialog = false;
         this.shift = false;
         this.keyWasPressed = false;
@@ -70,7 +71,10 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             }, 0);
         });
         this.maxLength = '';
-        if (this.inputElement !== undefined) {
+        if (this.selectContent) {
+            this.inputElement.nativeElement.select();
+        }
+        else if (this.inputElement !== undefined) {
             if (this.inputElement.nativeElement.value.length) {
                 this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
             }
@@ -297,6 +301,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     VirtualKeyboardComponent.propDecorators = {
         keyboardInput: [{ type: core_1.ViewChild, args: ['keyboardInput',] }],
         inputRef: [{ type: core_1.Input }],
+        selectContent: [{ type: core_1.Input }],
         layout: [{ type: core_1.Input }]
     };
     return VirtualKeyboardComponent;

@@ -80,6 +80,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
 
   public inputElement: ElementRef;
   @Input() inputRef: any;
+  @Input() selectContent: boolean = false;
   @Input() layout: KeyboardLayout | string;
   public isDialog: boolean = false;
   public placeholder: string;
@@ -174,7 +175,9 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
       }, 0);
     });
     this.maxLength = '';
-    if (this.inputElement !== undefined) {
+    if (this.selectContent){
+      this.inputElement.nativeElement.select();
+    } else if (this.inputElement !== undefined) {
       if (this.inputElement.nativeElement.value.length) {
         this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
       }
@@ -201,7 +204,6 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     this.keyboardInputRef = new ElementRef(ref);
     this.inputElement = new ElementRef(ref);
     this.inputElement.nativeElement.addEventListener('click', this.updateCaretPosition.bind(this));
-
     this.doInit();    
   }
 

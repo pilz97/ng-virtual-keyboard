@@ -9,7 +9,8 @@ import {
   extendedNordicKeyboard,
   KeyboardLayout,
   numericKeyboard,
-  phoneKeyboard
+  phoneKeyboard,
+  priceKeyboard
 } from './layouts';
 
 @Directive({
@@ -109,6 +110,9 @@ export class NgVirtualKeyboardDirective {
         break;
       case 'phone':
         layout = phoneKeyboard;
+        break;
+      case 'price':
+        layout = priceKeyboard;
         break;
       default:
         layout = this.layout;

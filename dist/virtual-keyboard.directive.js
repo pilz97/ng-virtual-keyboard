@@ -81,6 +81,9 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
             case 'phone':
                 layout = layouts_1.phoneKeyboard;
                 break;
+            case 'price':
+                layout = layouts_1.priceKeyboard;
+                break;
             default:
                 layout = this.layout;
                 break;

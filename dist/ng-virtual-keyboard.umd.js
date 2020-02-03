@@ -112,6 +112,7 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     function VirtualKeyboardComponent(dialogRef, virtualKeyboardService) {
         this.dialogRef = dialogRef;
         this.virtualKeyboardService = virtualKeyboardService;
+        this.selectContent = false;
         this.isDialog = false;
         this.shift = false;
         this.keyWasPressed = false;
@@ -169,7 +170,10 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             }, 0);
         });
         this.maxLength = '';
-        if (this.inputElement !== undefined) {
+        if (this.selectContent) {
+            this.inputElement.nativeElement.select();
+        }
+        else if (this.inputElement !== undefined) {
             if (this.inputElement.nativeElement.value.length) {
                 this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
             }
@@ -392,6 +396,10 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     ], VirtualKeyboardComponent.prototype, "inputRef", void 0);
     __decorate([
         core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], VirtualKeyboardComponent.prototype, "selectContent", void 0);
+    __decorate([
+        core_1.Input(),
         __metadata("design:type", Object)
     ], VirtualKeyboardComponent.prototype, "layout", void 0);
     VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
@@ -452,6 +460,28 @@ exports.phoneKeyboard = [
     ['4', '5', '6', 'Spacer:2'],
     ['7', '8', '9', 'Spacer:2'],
     ['-', '0', '+', 'Spacer:2'],
+];
+exports.priceKeyboard = [
+    [
+        '1',
+        '2',
+        '3',
+    ],
+    [
+        '4',
+        '5',
+        '6',
+    ],
+    [
+        '7',
+        '8',
+        '9',
+    ],
+    [
+        '.',
+        '0',
+        'Backspace',
+    ],
 ];
 exports.specialKeys = [
     'Enter',
@@ -625,6 +655,9 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
                 break;
             case 'phone':
                 layout = layouts_1.phoneKeyboard;
+                break;
+            case 'price':
+                layout = layouts_1.priceKeyboard;
                 break;
             default:
                 layout = this.layout;

@@ -44,6 +44,29 @@ export const phoneKeyboard: KeyboardLayout = [
   ['-', '0', '+', 'Spacer:2'],
 ];
 
+export const priceKeyboard: KeyboardLayout = [
+  [
+    '1',
+    '2',
+    '3',
+  ],
+  [
+    '4',
+    '5',
+    '6',
+  ],
+  [
+    '7',
+    '8',
+    '9',
+  ],
+  [
+    '.',
+    '0',
+    'Backspace',
+  ],
+];
+
 export const specialKeys: Array<string> = [
   'Enter',
   'Backspace',

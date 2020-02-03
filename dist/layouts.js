@@ -38,6 +38,28 @@ exports.phoneKeyboard = [
     ['7', '8', '9', 'Spacer:2'],
     ['-', '0', '+', 'Spacer:2'],
 ];
+exports.priceKeyboard = [
+    [
+        '1',
+        '2',
+        '3',
+    ],
+    [
+        '4',
+        '5',
+        '6',
+    ],
+    [
+        '7',
+        '8',
+        '9',
+    ],
+    [
+        '.',
+        '0',
+        'Backspace',
+    ],
+];
 exports.specialKeys = [
     'Enter',
     'Backspace',

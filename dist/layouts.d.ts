@@ -5,6 +5,7 @@ export declare const extendedKeyboard: KeyboardLayout;
 export declare const extendedNordicKeyboard: KeyboardLayout;
 export declare const numericKeyboard: KeyboardLayout;
 export declare const phoneKeyboard: KeyboardLayout;
+export declare const priceKeyboard: KeyboardLayout;
 export declare const specialKeys: Array<string>;
 export declare const specialKeyIcons: {
     Enter: string;
