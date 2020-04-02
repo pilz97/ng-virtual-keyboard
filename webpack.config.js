@@ -3,7 +3,7 @@ let webpack = require('webpack');
 
 module.exports = {
   entry: {
-    '@protacon/ng-virtual-keyboard': path.join(__dirname, 'src', 'index.ts'),
+    '@protacon/popup-keyboard': path.join(__dirname, 'src', 'index.ts'),
   },
   resolve: {
     extensions: [
@@ -21,9 +21,9 @@ module.exports = {
   */
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'ng-virtual-keyboard.umd.js',
+    filename: 'popup-keyboard.umd.js',
     library: [
-      'ng-virtual-keyboard',
+      'popup-keyboard',
     ],
     libraryTarget: 'umd',
   },

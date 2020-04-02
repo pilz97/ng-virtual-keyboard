@@ -18,7 +18,7 @@ const config = {
       '.js',
     ],
     alias: {
-      '@protacon/ng-virtual-keyboard': '../src/index.ts',
+      '@protacon/popup-keyboard': '../src/index.ts',
     }
   },
   devtool: 'source-map',

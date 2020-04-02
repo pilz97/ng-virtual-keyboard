@@ -73,27 +73,27 @@ export class AppComponent {
   public badges = [
     {
       img: 'https://img.shields.io/badge/license-MIT-blue.svg',
-      link: 'https://github.com/protacon/ng-virtual-keyboard/blob/master/LICENSE',
+      link: 'https://github.com/protacon/popup-keyboard/blob/master/LICENSE',
     },
     {
-      img: 'https://badge.fury.io/js/%40protacon%2Fng-virtual-keyboard.svg',
-      link: 'https://badge.fury.io/js/%40protacon%2Fng-virtual-keyboard',
+      img: 'https://badge.fury.io/js/%40protacon%2Fpopup-keyboard.svg',
+      link: 'https://badge.fury.io/js/%40protacon%2Fpopup-keyboard',
     },
     {
-      img: 'https://travis-ci.org/protacon/ng-virtual-keyboard.png?branch=master',
-      link: 'https://travis-ci.org/protacon/ng-virtual-keyboard',
+      img: 'https://travis-ci.org/protacon/popup-keyboard.png?branch=master',
+      link: 'https://travis-ci.org/protacon/popup-keyboard',
     },
     {
-      img: 'https://codecov.io/gh/protacon/ng-virtual-keyboard/branch/master/graph/badge.svg',
-      link: 'https://codecov.io/gh/protacon/ng-virtual-keyboard',
+      img: 'https://codecov.io/gh/protacon/popup-keyboard/branch/master/graph/badge.svg',
+      link: 'https://codecov.io/gh/protacon/popup-keyboard',
     },
     {
-      img: 'https://david-dm.org/protacon/ng-virtual-keyboard.svg',
-      link: 'https://david-dm.org/protacon/ng-virtual-keyboard',
+      img: 'https://david-dm.org/protacon/popup-keyboard.svg',
+      link: 'https://david-dm.org/protacon/popup-keyboard',
     },
     {
-      img: 'https://david-dm.org/protacon/ng-virtual-keyboard/dev-status.svg',
-      link: 'https://david-dm.org/protacon/ng-virtual-keyboard#info=devDependencies',
+      img: 'https://david-dm.org/protacon/popup-keyboard/dev-status.svg',
+      link: 'https://david-dm.org/protacon/popup-keyboard#info=devDependencies',
     },
   ];
 

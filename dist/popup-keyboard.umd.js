@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["@angular/core", "@angular/material", "@angular/material/dialog", "@angular/common", "@angular/flex-layout", "@angular/forms", "rxjs/internal/ReplaySubject"], factory);
 	else if(typeof exports === 'object')
-		exports["ng-virtual-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
+		exports["popup-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else
-		root["ng-virtual-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/material/dialog"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/internal/ReplaySubject"]);
+		root["popup-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/material/dialog"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/internal/ReplaySubject"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__, __WEBPACK_EXTERNAL_MODULE_14__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -682,15 +682,15 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         return this.type ? this.type : this.element.nativeElement.type;
     };
     __decorate([
-        core_1.Input('ng-virtual-keyboard-layout'),
+        core_1.Input('popup-keyboard-layout'),
         __metadata("design:type", Object)
     ], NgVirtualKeyboardDirective.prototype, "layout", void 0);
     __decorate([
-        core_1.Input('ng-virtual-keyboard-placeholder'),
+        core_1.Input('popup-keyboard-placeholder'),
         __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input('ng-virtual-keyboard-type'),
+        core_1.Input('popup-keyboard-type'),
         __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "type", void 0);
     __decorate([
@@ -719,7 +719,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     ], NgVirtualKeyboardDirective.prototype, "onClick", null);
     NgVirtualKeyboardDirective = __decorate([
         core_1.Directive({
-            selector: '[ng-virtual-keyboard]'
+            selector: '[popup-keyboard]'
         }),
         __metadata("design:paramtypes", [core_1.ElementRef,
             material_1.MatDialog])
@@ -1096,4 +1096,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_14__;
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=ng-virtual-keyboard.umd.js.map
+//# sourceMappingURL=popup-keyboard.umd.js.map

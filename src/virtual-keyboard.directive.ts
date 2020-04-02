@@ -14,16 +14,16 @@ import {
 } from './layouts';
 
 @Directive({
-  selector: '[ng-virtual-keyboard]'
+  selector: '[popup-keyboard]'
 })
 
 export class NgVirtualKeyboardDirective {
   private opened = false;
   private focus = true;
 
-  @Input('ng-virtual-keyboard-layout') layout: KeyboardLayout|string;
-  @Input('ng-virtual-keyboard-placeholder') placeholder: string;
-  @Input('ng-virtual-keyboard-type') type: string;
+  @Input('popup-keyboard-layout') layout: KeyboardLayout|string;
+  @Input('popup-keyboard-placeholder') placeholder: string;
+  @Input('popup-keyboard-type') type: string;
 
   @HostListener('window:blur')
   onWindowBlur() {

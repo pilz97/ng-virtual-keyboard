@@ -108,7 +108,7 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     };
     NgVirtualKeyboardDirective.decorators = [
         { type: core_1.Directive, args: [{
-                    selector: '[ng-virtual-keyboard]'
+                    selector: '[popup-keyboard]'
                 },] },
     ];
     /** @nocollapse */
@@ -117,9 +117,9 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         { type: material_1.MatDialog }
     ]; };
     NgVirtualKeyboardDirective.propDecorators = {
-        layout: [{ type: core_1.Input, args: ['ng-virtual-keyboard-layout',] }],
-        placeholder: [{ type: core_1.Input, args: ['ng-virtual-keyboard-placeholder',] }],
-        type: [{ type: core_1.Input, args: ['ng-virtual-keyboard-type',] }],
+        layout: [{ type: core_1.Input, args: ['popup-keyboard-layout',] }],
+        placeholder: [{ type: core_1.Input, args: ['popup-keyboard-placeholder',] }],
+        type: [{ type: core_1.Input, args: ['popup-keyboard-type',] }],
         onWindowBlur: [{ type: core_1.HostListener, args: ['window:blur',] }],
         onWindowFocus: [{ type: core_1.HostListener, args: ['window:focus',] }],
         onFocus: [{ type: core_1.HostListener, args: ['focus',] }],
