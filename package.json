@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/protacon/popup-keyboard.git"
+    "url": "git+https://github.com/by-pinja/ng-virtual-keyboard.git"
   },
   "keywords": [
     "Angular"
@@ -26,9 +26,9 @@
   "author": "Protacon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/protacon/popup-keyboard/issues"
+    "url": "https://github.com/by-pinja/ng-virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/protacon/popup-keyboard#readme",
+  "homepage": "https://github.com/by-pinja/ng-virtual-keyboard#readme",
   "prefer-stable": true,
   "dependencies": {
     "@angular/animations": "^6.1.9",
