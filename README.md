@@ -2,8 +2,8 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm version](https://badge.fury.io/js/%40protacon%2Fpopup-keyboard.svg)](https://badge.fury.io/js/%40protacon%2Fpopup-keyboard)
 [![npm](https://img.shields.io/npm/dm/popup-keyboard.svg)](https://www.npmjs.com/package/popup-keyboard)
-[![Dependency Status](https://david-dm.org/protacon/popup-keyboard.svg)](https://david-dm.org/protacon/popup-keyboard)
-[![devDependency Status](https://david-dm.org/protacon/popup-keyboard/dev-status.svg)](https://david-dm.org/protacon/popup-keyboard#info=devDependencies)
+[![Dependency Status](https://david-dm.org/by-pinja/ng-virtual-keyboard.svg)](https://david-dm.org/by-pinja/ng-virtual-keyboard)
+[![devDependency Status](https://david-dm.org/by-pinja/ng-virtual-keyboard/dev-status.svg)](https://david-dm.org/by-pinja/ng-virtual-keyboard#info=devDependencies)
 
 ## What is this?
 Virtual Keyboard for Angular applications
