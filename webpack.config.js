@@ -3,7 +3,7 @@ let webpack = require('webpack');
 
 module.exports = {
   entry: {
-    '@protacon/popup-keyboard': path.join(__dirname, 'src', 'index.ts'),
+    'popup-keyboard': path.join(__dirname, 'src', 'index.ts'),
   },
   resolve: {
     extensions: [

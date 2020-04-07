@@ -18,7 +18,7 @@ const config = {
       '.js',
     ],
     alias: {
-      '@protacon/popup-keyboard': '../src/index.ts',
+      'popup-keyboard': '../src/index.ts',
     }
   },
   devtool: 'source-map',

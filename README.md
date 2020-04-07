@@ -1,7 +1,7 @@
 # popup-keyboard
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm version](https://badge.fury.io/js/%40protacon%2Fpopup-keyboard.svg)](https://badge.fury.io/js/%40protacon%2Fpopup-keyboard)
-[![npm](https://img.shields.io/npm/dm/@protacon/popup-keyboard.svg)](https://www.npmjs.com/package/@protacon/popup-keyboard)
+[![npm](https://img.shields.io/npm/dm/popup-keyboard.svg)](https://www.npmjs.com/package/popup-keyboard)
 [![Dependency Status](https://david-dm.org/protacon/popup-keyboard.svg)](https://david-dm.org/protacon/popup-keyboard)
 [![devDependency Status](https://david-dm.org/protacon/popup-keyboard/dev-status.svg)](https://david-dm.org/protacon/popup-keyboard#info=devDependencies)
 
@@ -9,15 +9,15 @@
 Virtual Keyboard for Angular applications
 
 ## Install
-### Step 1: Install @protacon/popup-keyboard
+### Step 1: Install popup-keyboard
 ```bash
-$ npm install --save @protacon/popup-keyboard
+$ npm install --save popup-keyboard
 ```
 
 ### Step 2: Import the module
 Add `NgVirtualKeyboardModule` as an import in your app's root NgModule.
 ```typescript
-import { NgVirtualKeyboardModule }  from '@protacon/popup-keyboard';
+import { NgVirtualKeyboardModule }  from 'popup-keyboard';
 
 @NgModule({
   ...

@@ -1,5 +1,5 @@
 {
-  "name": "@protacon/popup-keyboard",
+  "name": "popup-keyboard",
   "version": "0.8.2",
   "description": "Virtual Keyboard for Angular applications",
   "main": "dist/popup-keyboard.umd.js",
