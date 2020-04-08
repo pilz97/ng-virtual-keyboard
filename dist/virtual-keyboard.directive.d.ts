@@ -1,7 +1,6 @@
 import { ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material';
 import { KeyboardLayout } from './layouts';
-import * as i0 from "@angular/core";
 export declare class NgVirtualKeyboardDirective {
     private element;
     private dialog;
@@ -43,6 +42,4 @@ export declare class NgVirtualKeyboardDirective {
      * @return {string}
      */
     private getType;
-    static ɵfac: i0.ɵɵFactoryDef<NgVirtualKeyboardDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDefWithMeta<NgVirtualKeyboardDirective, "[popup-keyboard]", never, { "layout": "popup-keyboard-layout"; "placeholder": "popup-keyboard-placeholder"; "type": "popup-keyboard-type"; }, {}, never>;
 }

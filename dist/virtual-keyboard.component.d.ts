@@ -3,7 +3,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { VirtualKeyboardService } from './virtual-keyboard.service';
 import { KeyPressInterface } from './key-press.interface';
 import { KeyboardLayout } from './layouts';
-import * as i0 from "@angular/core";
 export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     dialogRef: MatDialogRef<VirtualKeyboardComponent>;
     private virtualKeyboardService;
@@ -105,6 +104,4 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
      * @param {KeyPressInterface} event
      */
     private dispatchEvents;
-    static ɵfac: i0.ɵɵFactoryDef<VirtualKeyboardComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDefWithMeta<VirtualKeyboardComponent, "virtual-keyboard", never, { "inputRef": "inputRef"; "selectContent": "selectContent"; "layout": "layout"; }, {}, never, never>;
 }

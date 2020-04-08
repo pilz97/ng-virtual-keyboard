@@ -4,60 +4,6 @@ var core_1 = require("@angular/core");
 var dialog_1 = require("@angular/material/dialog");
 var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
 var layouts_1 = require("./layouts");
-var i0 = require("@angular/core");
-var i1 = require("@angular/material/dialog");
-var i2 = require("./virtual-keyboard.service");
-var i3 = require("@angular/flex-layout/flex");
-var i4 = require("@angular/common");
-var i5 = require("@angular/material/form-field");
-var i6 = require("@angular/material/icon");
-var i7 = require("@angular/material/input");
-var i8 = require("@angular/forms");
-var i9 = require("./virtual-keyboard-key.component");
-var _c0 = ["keyboardInput"];
-function VirtualKeyboardComponent_mat_form_field_2_Template(rf, ctx) { if (rf & 1) {
-    var _r4 = i0.ɵɵgetCurrentView();
-    i0.ɵɵelementStart(0, "mat-form-field");
-    i0.ɵɵelementStart(1, "button", 4);
-    i0.ɵɵlistener("click", function VirtualKeyboardComponent_mat_form_field_2_Template_button_click_1_listener() { i0.ɵɵrestoreView(_r4); var ctx_r3 = i0.ɵɵnextContext(); return ctx_r3.close(); });
-    i0.ɵɵelementStart(2, "mat-icon");
-    i0.ɵɵtext(3, "check");
-    i0.ɵɵelementEnd();
-    i0.ɵɵelementEnd();
-    i0.ɵɵelementStart(4, "input", 5, 6);
-    i0.ɵɵlistener("click", function VirtualKeyboardComponent_mat_form_field_2_Template_input_click_4_listener() { i0.ɵɵrestoreView(_r4); var ctx_r5 = i0.ɵɵnextContext(); return ctx_r5.updateCaretPosition(); })("ngModelChange", function VirtualKeyboardComponent_mat_form_field_2_Template_input_ngModelChange_4_listener($event) { i0.ɵɵrestoreView(_r4); var ctx_r6 = i0.ɵɵnextContext(); return ctx_r6.inputElement.nativeElement.value = $event; });
-    i0.ɵɵelementEnd();
-    i0.ɵɵelementEnd();
-} if (rf & 2) {
-    var ctx_r0 = i0.ɵɵnextContext();
-    i0.ɵɵadvance(4);
-    i0.ɵɵpropertyInterpolate("type", ctx_r0.type);
-    i0.ɵɵpropertyInterpolate("placeholder", ctx_r0.placeholder);
-    i0.ɵɵproperty("ngModel", ctx_r0.inputElement.nativeElement.value)("maxLength", ctx_r0.maxLength);
-} }
-function VirtualKeyboardComponent_div_3_virtual_keyboard_key_1_Template(rf, ctx) { if (rf & 1) {
-    var _r13 = i0.ɵɵgetCurrentView();
-    i0.ɵɵelementStart(0, "virtual-keyboard-key", 9);
-    i0.ɵɵlistener("keyPress", function VirtualKeyboardComponent_div_3_virtual_keyboard_key_1_Template_virtual_keyboard_key_keyPress_0_listener($event) { i0.ɵɵrestoreView(_r13); var ctx_r12 = i0.ɵɵnextContext(2); return ctx_r12.keyPress($event); });
-    i0.ɵɵelementEnd();
-} if (rf & 2) {
-    var key_r10 = ctx.$implicit;
-    var keyIndex_r11 = ctx.index;
-    var ctx_r9 = i0.ɵɵnextContext(2);
-    i0.ɵɵproperty("key", key_r10)("disabled", ctx_r9.disabled);
-    i0.ɵɵattribute("data-index", keyIndex_r11);
-} }
-function VirtualKeyboardComponent_div_3_Template(rf, ctx) { if (rf & 1) {
-    i0.ɵɵelementStart(0, "div", 7);
-    i0.ɵɵtemplate(1, VirtualKeyboardComponent_div_3_virtual_keyboard_key_1_Template, 1, 3, "virtual-keyboard-key", 8);
-    i0.ɵɵelementEnd();
-} if (rf & 2) {
-    var row_r7 = ctx.$implicit;
-    var rowIndex_r8 = ctx.index;
-    i0.ɵɵattribute("data-index", rowIndex_r8);
-    i0.ɵɵadvance(1);
-    i0.ɵɵproperty("ngForOf", row_r7);
-} }
 var VirtualKeyboardComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -340,43 +286,25 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         // And set focus to input
         this.getKeyboardInput().nativeElement.focus();
     };
-    VirtualKeyboardComponent.ɵfac = function VirtualKeyboardComponent_Factory(t) { return new (t || VirtualKeyboardComponent)(i0.ɵɵdirectiveInject(i1.MatDialogRef), i0.ɵɵdirectiveInject(i2.VirtualKeyboardService)); };
-    VirtualKeyboardComponent.ɵcmp = i0.ɵɵdefineComponent({ type: VirtualKeyboardComponent, selectors: [["virtual-keyboard"]], viewQuery: function VirtualKeyboardComponent_Query(rf, ctx) { if (rf & 1) {
-            i0.ɵɵviewQuery(_c0, true);
-        } if (rf & 2) {
-            var _t;
-            i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.keyboardInput = _t.first);
-        } }, inputs: { inputRef: "inputRef", selectContent: "selectContent", layout: "layout" }, decls: 4, vars: 2, consts: [[1, "container"], ["fxLayout", "column"], [4, "ngIf"], ["fxLayout", "row", "fxLayoutAlign", "center center", 4, "ngFor", "ngForOf"], [1, "close", 3, "click"], ["matInput", "", "autofocus", "", 3, "type", "ngModel", "placeholder", "maxLength", "click", "ngModelChange"], ["keyboardInput", ""], ["fxLayout", "row", "fxLayoutAlign", "center center"], [3, "key", "disabled", "keyPress", 4, "ngFor", "ngForOf"], [3, "key", "disabled", "keyPress"]], template: function VirtualKeyboardComponent_Template(rf, ctx) { if (rf & 1) {
-            i0.ɵɵelementStart(0, "div", 0);
-            i0.ɵɵelementStart(1, "div", 1);
-            i0.ɵɵtemplate(2, VirtualKeyboardComponent_mat_form_field_2_Template, 6, 4, "mat-form-field", 2);
-            i0.ɵɵtemplate(3, VirtualKeyboardComponent_div_3_Template, 2, 2, "div", 3);
-            i0.ɵɵelementEnd();
-            i0.ɵɵelementEnd();
-        } if (rf & 2) {
-            i0.ɵɵadvance(2);
-            i0.ɵɵproperty("ngIf", ctx.isDialog);
-            i0.ɵɵadvance(1);
-            i0.ɵɵproperty("ngForOf", ctx.layout);
-        } }, directives: [i3.DefaultLayoutDirective, i4.NgIf, i4.NgForOf, i5.MatFormField, i6.MatIcon, i7.MatInput, i8.DefaultValueAccessor, i8.NgControlStatus, i8.NgModel, i3.DefaultLayoutAlignDirective, i9.VirtualKeyboardKeyComponent], styles: [".close[_ngcontent-%COMP%] {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container[_ngcontent-%COMP%] {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element[_ngcontent-%COMP%]:disabled {\n      color: currentColor;\n    }\n\n    [_nghost-%COMP%]     .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }"] });
+    VirtualKeyboardComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'virtual-keyboard',
+                    template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field *ngIf=\"isDialog\">\n          <button class=\"close\"\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\" autofocus\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
+                    styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
+                },] },
+    ];
+    /** @nocollapse */
+    VirtualKeyboardComponent.ctorParameters = function () { return [
+        { type: dialog_1.MatDialogRef },
+        { type: virtual_keyboard_service_1.VirtualKeyboardService }
+    ]; };
+    VirtualKeyboardComponent.propDecorators = {
+        keyboardInput: [{ type: core_1.ViewChild, args: ['keyboardInput',] }],
+        inputRef: [{ type: core_1.Input }],
+        selectContent: [{ type: core_1.Input }],
+        layout: [{ type: core_1.Input }]
+    };
     return VirtualKeyboardComponent;
 }());
 exports.VirtualKeyboardComponent = VirtualKeyboardComponent;
-/*@__PURE__*/ (function () { i0.ɵsetClassMetadata(VirtualKeyboardComponent, [{
-        type: core_1.Component,
-        args: [{
-                selector: 'virtual-keyboard',
-                template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field *ngIf=\"isDialog\">\n          <button class=\"close\"\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\" autofocus\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
-                styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
-            }]
-    }], function () { return [{ type: i1.MatDialogRef }, { type: i2.VirtualKeyboardService }]; }, { keyboardInput: [{
-            type: core_1.ViewChild,
-            args: ['keyboardInput']
-        }], inputRef: [{
-            type: core_1.Input
-        }], selectContent: [{
-            type: core_1.Input
-        }], layout: [{
-            type: core_1.Input
-        }] }); })();
 //# sourceMappingURL=virtual-keyboard.component.js.map

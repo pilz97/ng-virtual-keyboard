@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/core"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("@angular/material/button"), require("@angular/material/icon"), require("@angular/material/input"), require("rxjs/internal/ReplaySubject"));
+		module.exports = factory(require("@angular/core"), require("@angular/material"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/core", "@angular/material/dialog", "@angular/common", "@angular/flex-layout", "@angular/forms", "@angular/material/button", "@angular/material/icon", "@angular/material/input", "rxjs/internal/ReplaySubject"], factory);
+		define(["@angular/core", "@angular/material", "@angular/material/dialog", "@angular/common", "@angular/flex-layout", "@angular/forms", "rxjs/internal/ReplaySubject"], factory);
 	else if(typeof exports === 'object')
-		exports["popup-keyboard"] = factory(require("@angular/core"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("@angular/material/button"), require("@angular/material/icon"), require("@angular/material/input"), require("rxjs/internal/ReplaySubject"));
+		exports["popup-keyboard"] = factory(require("@angular/core"), require("@angular/material"), require("@angular/material/dialog"), require("@angular/common"), require("@angular/flex-layout"), require("@angular/forms"), require("rxjs/internal/ReplaySubject"));
 	else
-		root["popup-keyboard"] = factory(root["@angular/core"], root["@angular/material/dialog"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["@angular/material/button"], root["@angular/material/icon"], root["@angular/material/input"], root["rxjs/internal/ReplaySubject"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__, __WEBPACK_EXTERNAL_MODULE_14__, __WEBPACK_EXTERNAL_MODULE_15__, __WEBPACK_EXTERNAL_MODULE_16__, __WEBPACK_EXTERNAL_MODULE_17__) {
+		root["popup-keyboard"] = factory(root["@angular/core"], root["@angular/material"], root["@angular/material/dialog"], root["@angular/common"], root["@angular/flex-layout"], root["@angular/forms"], root["rxjs/internal/ReplaySubject"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__, __WEBPACK_EXTERNAL_MODULE_14__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -78,265 +78,30 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["__extends"] = __extends;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__assign", function() { return __assign; });
-/* harmony export (immutable) */ __webpack_exports__["__rest"] = __rest;
-/* harmony export (immutable) */ __webpack_exports__["__decorate"] = __decorate;
-/* harmony export (immutable) */ __webpack_exports__["__param"] = __param;
-/* harmony export (immutable) */ __webpack_exports__["__metadata"] = __metadata;
-/* harmony export (immutable) */ __webpack_exports__["__awaiter"] = __awaiter;
-/* harmony export (immutable) */ __webpack_exports__["__generator"] = __generator;
-/* harmony export (immutable) */ __webpack_exports__["__exportStar"] = __exportStar;
-/* harmony export (immutable) */ __webpack_exports__["__values"] = __values;
-/* harmony export (immutable) */ __webpack_exports__["__read"] = __read;
-/* harmony export (immutable) */ __webpack_exports__["__spread"] = __spread;
-/* harmony export (immutable) */ __webpack_exports__["__spreadArrays"] = __spreadArrays;
-/* harmony export (immutable) */ __webpack_exports__["__await"] = __await;
-/* harmony export (immutable) */ __webpack_exports__["__asyncGenerator"] = __asyncGenerator;
-/* harmony export (immutable) */ __webpack_exports__["__asyncDelegator"] = __asyncDelegator;
-/* harmony export (immutable) */ __webpack_exports__["__asyncValues"] = __asyncValues;
-/* harmony export (immutable) */ __webpack_exports__["__makeTemplateObject"] = __makeTemplateObject;
-/* harmony export (immutable) */ __webpack_exports__["__importStar"] = __importStar;
-/* harmony export (immutable) */ __webpack_exports__["__importDefault"] = __importDefault;
-/* harmony export (immutable) */ __webpack_exports__["__classPrivateFieldGet"] = __classPrivateFieldGet;
-/* harmony export (immutable) */ __webpack_exports__["__classPrivateFieldSet"] = __classPrivateFieldSet;
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    }
-    return __assign.apply(this, arguments);
-}
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-
-function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
-
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
-
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
-
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-}
-
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-}
-
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-
-function __importStar(mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result.default = mod;
-    return result;
-}
-
-function __importDefault(mod) {
-    return (mod && mod.__esModule) ? mod : { default: mod };
-}
-
-function __classPrivateFieldGet(receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
-}
-
-function __classPrivateFieldSet(receiver, privateMap, value) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to set private field on non-instance");
-    }
-    privateMap.set(receiver, value);
-    return value;
-}
-
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
-var dialog_1 = __webpack_require__(3);
-var virtual_keyboard_service_1 = __webpack_require__(7);
-var layouts_1 = __webpack_require__(4);
+var core_1 = __webpack_require__(0);
+var dialog_1 = __webpack_require__(7);
+var virtual_keyboard_service_1 = __webpack_require__(6);
+var layouts_1 = __webpack_require__(2);
 var VirtualKeyboardComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -621,29 +386,29 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         this.getKeyboardInput().nativeElement.focus();
     };
     var VirtualKeyboardComponent_1;
-    tslib_1.__decorate([
+    __decorate([
         core_1.ViewChild('keyboardInput'),
-        tslib_1.__metadata("design:type", core_1.ElementRef)
+        __metadata("design:type", core_1.ElementRef)
     ], VirtualKeyboardComponent.prototype, "keyboardInput", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input(),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], VirtualKeyboardComponent.prototype, "inputRef", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input(),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], VirtualKeyboardComponent.prototype, "selectContent", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input(),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], VirtualKeyboardComponent.prototype, "layout", void 0);
-    VirtualKeyboardComponent = VirtualKeyboardComponent_1 = tslib_1.__decorate([
+    VirtualKeyboardComponent = VirtualKeyboardComponent_1 = __decorate([
         core_1.Component({
             selector: 'virtual-keyboard',
             template: "\n    <div class=\"container\">\n      <div fxLayout=\"column\">\n        <mat-form-field *ngIf=\"isDialog\">\n          <button class=\"close\"\n            (click)=\"close()\"\n          >\n            <mat-icon>check</mat-icon>\n          </button>\n    \n          <input type=\"{{type}}\"\n            matInput\n            #keyboardInput\n            (click)=\"updateCaretPosition()\"\n            [(ngModel)]=\"inputElement.nativeElement.value\" placeholder=\"{{ placeholder }}\"\n            [maxLength]=\"maxLength\" autofocus\n          />\n        </mat-form-field>\n    \n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n          *ngFor=\"let row of layout; let rowIndex = index\"\n          [attr.data-index]=\"rowIndex\"\n        >\n          <virtual-keyboard-key\n            *ngFor=\"let key of row; let keyIndex = index\"\n            [key]=\"key\"\n            [disabled]=\"disabled\"\n            [attr.data-index]=\"keyIndex\"\n            (keyPress)=\"keyPress($event)\"\n          ></virtual-keyboard-key>\n        </div>\n      </div>\n    </div>\n  ",
             styles: ["\n    .close {\n      position: relative;\n      float: right;\n      top: -16px;\n      right: 0;\n      margin-bottom: -40px;\n    }\n  \n    .mat-input-container {\n      margin: -16px 0;\n      font-size: 32px;\n    }\n  \n    .mat-input-element:disabled {\n      color: currentColor;\n    }\n\n    :host /deep/ .mat-input-placeholder {\n      top: 10px !important;\n      font-size: 24px !important;\n    }\n  "]
         }),
-        tslib_1.__metadata("design:paramtypes", [dialog_1.MatDialogRef,
+        __metadata("design:paramtypes", [dialog_1.MatDialogRef,
             virtual_keyboard_service_1.VirtualKeyboardService])
     ], VirtualKeyboardComponent);
     return VirtualKeyboardComponent;
@@ -652,13 +417,7 @@ exports.VirtualKeyboardComponent = VirtualKeyboardComponent;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
-/***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -795,17 +554,31 @@ exports.keyboardCapsLockLayout = keyboardCapsLockLayout;
 
 
 /***/ }),
-/* 5 */
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
-var dialog_1 = __webpack_require__(3);
-var virtual_keyboard_component_1 = __webpack_require__(2);
-var layouts_1 = __webpack_require__(4);
+var core_1 = __webpack_require__(0);
+var material_1 = __webpack_require__(3);
+var virtual_keyboard_component_1 = __webpack_require__(1);
+var layouts_1 = __webpack_require__(2);
 var NgVirtualKeyboardDirective = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -908,48 +681,48 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     NgVirtualKeyboardDirective.prototype.getType = function () {
         return this.type ? this.type : this.element.nativeElement.type;
     };
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input('popup-keyboard-layout'),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], NgVirtualKeyboardDirective.prototype, "layout", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input('popup-keyboard-placeholder'),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "placeholder", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input('popup-keyboard-type'),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], NgVirtualKeyboardDirective.prototype, "type", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.HostListener('window:blur'),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", []),
-        tslib_1.__metadata("design:returntype", void 0)
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], NgVirtualKeyboardDirective.prototype, "onWindowBlur", null);
-    tslib_1.__decorate([
+    __decorate([
         core_1.HostListener('window:focus'),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", []),
-        tslib_1.__metadata("design:returntype", void 0)
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], NgVirtualKeyboardDirective.prototype, "onWindowFocus", null);
-    tslib_1.__decorate([
+    __decorate([
         core_1.HostListener('focus'),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", []),
-        tslib_1.__metadata("design:returntype", void 0)
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], NgVirtualKeyboardDirective.prototype, "onFocus", null);
-    tslib_1.__decorate([
+    __decorate([
         core_1.HostListener('click'),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", []),
-        tslib_1.__metadata("design:returntype", void 0)
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], NgVirtualKeyboardDirective.prototype, "onClick", null);
-    NgVirtualKeyboardDirective = tslib_1.__decorate([
+    NgVirtualKeyboardDirective = __decorate([
         core_1.Directive({
             selector: '[popup-keyboard]'
         }),
-        tslib_1.__metadata("design:paramtypes", [core_1.ElementRef,
-            dialog_1.MatDialog])
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            material_1.MatDialog])
     ], NgVirtualKeyboardDirective);
     return NgVirtualKeyboardDirective;
 }());
@@ -957,16 +730,24 @@ exports.NgVirtualKeyboardDirective = NgVirtualKeyboardDirective;
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
-var dialog_1 = __webpack_require__(3);
-var virtual_keyboard_component_1 = __webpack_require__(2);
+var core_1 = __webpack_require__(0);
+var material_1 = __webpack_require__(3);
+var virtual_keyboard_component_1 = __webpack_require__(1);
 var NgVirtualOnScreenKeyboardDirective = /** @class */ (function () {
     function NgVirtualOnScreenKeyboardDirective(element, dialog) {
         this.element = element;
@@ -983,22 +764,22 @@ var NgVirtualOnScreenKeyboardDirective = /** @class */ (function () {
         this.inputRefSet = true;
         this.virtualKeyboardRef.setInputRef(this.element.nativeElement);
     };
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input('ng-virtual-onscreen-keyboard'),
-        tslib_1.__metadata("design:type", virtual_keyboard_component_1.VirtualKeyboardComponent)
+        __metadata("design:type", virtual_keyboard_component_1.VirtualKeyboardComponent)
     ], NgVirtualOnScreenKeyboardDirective.prototype, "virtualKeyboardRef", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.HostListener('focus'),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", []),
-        tslib_1.__metadata("design:returntype", void 0)
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], NgVirtualOnScreenKeyboardDirective.prototype, "onFocus", null);
-    NgVirtualOnScreenKeyboardDirective = tslib_1.__decorate([
+    NgVirtualOnScreenKeyboardDirective = __decorate([
         core_1.Directive({
             selector: '[ng-virtual-onscreen-keyboard]'
         }),
-        tslib_1.__metadata("design:paramtypes", [core_1.ElementRef,
-            dialog_1.MatDialog])
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            material_1.MatDialog])
     ], NgVirtualOnScreenKeyboardDirective);
     return NgVirtualOnScreenKeyboardDirective;
 }());
@@ -1006,15 +787,20 @@ exports.NgVirtualOnScreenKeyboardDirective = NgVirtualOnScreenKeyboardDirective;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
-var ReplaySubject_1 = __webpack_require__(17);
+var core_1 = __webpack_require__(0);
+var ReplaySubject_1 = __webpack_require__(14);
 var VirtualKeyboardService = /** @class */ (function () {
     function VirtualKeyboardService() {
         this.shift$ = new ReplaySubject_1.ReplaySubject(1);
@@ -1071,7 +857,7 @@ var VirtualKeyboardService = /** @class */ (function () {
     VirtualKeyboardService.prototype.reset = function () {
         this.setShift(false);
     };
-    VirtualKeyboardService = tslib_1.__decorate([
+    VirtualKeyboardService = __decorate([
         core_1.Injectable()
     ], VirtualKeyboardService);
     return VirtualKeyboardService;
@@ -1080,30 +866,39 @@ exports.VirtualKeyboardService = VirtualKeyboardService;
 
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
+var core_1 = __webpack_require__(0);
 var common_1 = __webpack_require__(11);
 var forms_1 = __webpack_require__(13);
-var button_1 = __webpack_require__(14);
-var icon_1 = __webpack_require__(15);
-var input_1 = __webpack_require__(16);
-var dialog_1 = __webpack_require__(3);
+var material_1 = __webpack_require__(3);
+var dialog_1 = __webpack_require__(7);
 var flex_layout_1 = __webpack_require__(12);
-var virtual_keyboard_directive_1 = __webpack_require__(5);
-var virtual_keyboard_component_1 = __webpack_require__(2);
+var virtual_keyboard_directive_1 = __webpack_require__(4);
+var virtual_keyboard_component_1 = __webpack_require__(1);
 var virtual_keyboard_key_component_1 = __webpack_require__(10);
-var virtual_keyboard_service_1 = __webpack_require__(7);
-var virtual_onscreen_keyboard_directive_1 = __webpack_require__(6);
+var virtual_keyboard_service_1 = __webpack_require__(6);
+var virtual_onscreen_keyboard_directive_1 = __webpack_require__(5);
 var NgVirtualKeyboardModule = /** @class */ (function () {
     function NgVirtualKeyboardModule() {
     }
-    NgVirtualKeyboardModule = tslib_1.__decorate([
+    NgVirtualKeyboardModule = __decorate([
         core_1.NgModule({
             declarations: [
                 virtual_keyboard_directive_1.NgVirtualKeyboardDirective,
@@ -1123,10 +918,10 @@ var NgVirtualKeyboardModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 flex_layout_1.FlexLayoutModule,
-                button_1.MatButtonModule,
+                material_1.MatButtonModule,
                 dialog_1.MatDialogModule,
-                icon_1.MatIconModule,
-                input_1.MatInputModule,
+                material_1.MatIconModule,
+                material_1.MatInputModule,
             ],
             entryComponents: [
                 virtual_keyboard_component_1.VirtualKeyboardComponent,
@@ -1150,13 +945,13 @@ exports.NgVirtualKeyboardModule = NgVirtualKeyboardModule;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var virtual_keyboard_directive_1 = __webpack_require__(5);
+var virtual_keyboard_directive_1 = __webpack_require__(4);
 exports.NgVirtualKeyboardDirective = virtual_keyboard_directive_1.NgVirtualKeyboardDirective;
-var virtual_onscreen_keyboard_directive_1 = __webpack_require__(6);
+var virtual_onscreen_keyboard_directive_1 = __webpack_require__(5);
 exports.NgVirtualOnScreenKeyboardDirective = virtual_onscreen_keyboard_directive_1.NgVirtualOnScreenKeyboardDirective;
 var virtual_keyboard_module_1 = __webpack_require__(8);
 exports.NgVirtualKeyboardModule = virtual_keyboard_module_1.NgVirtualKeyboardModule;
-var virtual_keyboard_component_1 = __webpack_require__(2);
+var virtual_keyboard_component_1 = __webpack_require__(1);
 exports.VirtualKeyboardComponent = virtual_keyboard_component_1.VirtualKeyboardComponent;
 
 
@@ -1166,10 +961,18 @@ exports.VirtualKeyboardComponent = virtual_keyboard_component_1.VirtualKeyboardC
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = __webpack_require__(0);
-var core_1 = __webpack_require__(1);
-var layouts_1 = __webpack_require__(4);
+var core_1 = __webpack_require__(0);
+var layouts_1 = __webpack_require__(2);
 var VirtualKeyboardKeyComponent = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -1241,25 +1044,25 @@ var VirtualKeyboardKeyComponent = /** @class */ (function () {
         }
         return '';
     };
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input(),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], VirtualKeyboardKeyComponent.prototype, "key", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Input(),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], VirtualKeyboardKeyComponent.prototype, "disabled", void 0);
-    tslib_1.__decorate([
+    __decorate([
         core_1.Output(),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], VirtualKeyboardKeyComponent.prototype, "keyPress", void 0);
-    VirtualKeyboardKeyComponent = tslib_1.__decorate([
+    VirtualKeyboardKeyComponent = __decorate([
         core_1.Component({
             selector: 'virtual-keyboard-key',
             template: "\n    <button\n      fxFlex=\"{{ flexValue }}\"\n      [class.spacer]=\"spacer\"\n      [disabled]=\"isDisabled()\"\n      [class]=\"getClass()\"\n      (click)=\"onKeyPress()\"\n    >\n      <span *ngIf=\"!special\">{{ keyValue }}</span>\n    \n      <span *ngIf=\"special\">\n        <mat-icon *ngIf=\"icon\">{{ icon }}</mat-icon>\n    \n        {{ text }}\n      </span>\n    </button>\n  ",
             styles: ["\n    .mat-button,\n    .mat-icon-button,\n    .mat-raised-button {\n      min-width: 64px;\n      min-height: 64px;\n      padding: 0;\n      margin: 2px;\n      font-size: 32px;\n      line-height: 32px;\n    }\n    \n    .mat-button.spacer,\n    .mat-icon-button.spacer,\n    .mat-raised-button.spacer {\n      background-color: transparent;\n    }\n\n    .empty-key {\n      border: none;\n      background: none;\n    }\n  "]
         }),
-        tslib_1.__metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [])
     ], VirtualKeyboardKeyComponent);
     return VirtualKeyboardKeyComponent;
 }());
@@ -1289,24 +1092,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_13__;
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_14__;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_15__;
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_16__;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_17__;
 
 /***/ })
 /******/ ]);

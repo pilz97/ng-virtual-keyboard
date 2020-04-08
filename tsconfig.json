@@ -20,7 +20,6 @@
     "noEmitHelpers": false,
     "isolatedModules": false,
     "strictNullChecks": false,
-    "importHelpers": true,
     "outDir": "dist",
     "baseUrl": "src",
     "paths": {
@@ -37,7 +36,6 @@
   "buildOnSave": false,
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
-    "skipTemplateCodegen": true,
-    "enableIvy": false
+    "skipTemplateCodegen": true
   }
 }
