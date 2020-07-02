@@ -7,6 +7,7 @@ var VirtualKeyboardService = /** @class */ (function () {
         this.shift$ = new ReplaySubject_1.ReplaySubject(1);
         this.capsLock$ = new ReplaySubject_1.ReplaySubject(1);
         this.caretPosition$ = new ReplaySubject_1.ReplaySubject(1);
+        this.dialogOpened = false;
         this.capsLock = false;
         this.shift = false;
     }

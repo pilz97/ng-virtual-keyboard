@@ -3,6 +3,7 @@ export declare class VirtualKeyboardService {
     shift$: ReplaySubject<boolean>;
     capsLock$: ReplaySubject<boolean>;
     caretPosition$: ReplaySubject<number>;
+    dialogOpened: boolean;
     private capsLock;
     private shift;
     /**

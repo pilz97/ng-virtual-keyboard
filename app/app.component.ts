@@ -118,4 +118,8 @@ export class AppComponent {
       this.invalid = true;
     }
   }
+
+  selectContentOnClick(event) {
+    event.target.select();
+  }
 }

@@ -1,12 +1,12 @@
 {
   "name": "popup-keyboard",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Virtual Keyboard for Angular applications",
   "main": "dist/popup-keyboard.umd.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "start": "NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host 127.0.0.1 --content-base app --config app/webpack.config --open",
+    "start": "npm run prepare && NODE_ENV=dev webpack-dev-server --progress --profile --port 4200 --host 127.0.0.1 --content-base app --config app/webpack.config --open",
     "lint": "tslint 'src/**/*.ts' 'app/**/*.ts'",
     "clean": "rimraf dist",
     "prepare": "npm-run-all --serial clean build:ngc build:umd build:app",

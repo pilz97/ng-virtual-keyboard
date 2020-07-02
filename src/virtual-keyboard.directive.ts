@@ -12,6 +12,7 @@ import {
   phoneKeyboard,
   priceKeyboard
 } from './layouts';
+import { VirtualKeyboardService } from './virtual-keyboard.service';
 
 @Directive({
   selector: '[popup-keyboard]'
@@ -24,6 +25,8 @@ export class NgVirtualKeyboardDirective {
   @Input('popup-keyboard-layout') layout: KeyboardLayout|string;
   @Input('popup-keyboard-placeholder') placeholder: string;
   @Input('popup-keyboard-type') type: string;
+  @Input('popup-keyboard-select-content') selectContent: boolean = false;
+
 
   @HostListener('window:blur')
   onWindowBlur() {
@@ -56,6 +59,7 @@ export class NgVirtualKeyboardDirective {
   public constructor(
     private element: ElementRef,
     private dialog: MatDialog,
+    private virualKeyboardService: VirtualKeyboardService,
   ) { }
 
   /**
@@ -66,19 +70,30 @@ export class NgVirtualKeyboardDirective {
       this.opened = true;
 
       let dialogRef: MatDialogRef<VirtualKeyboardComponent>;
-
+      this.virualKeyboardService.dialogOpened = true;
       dialogRef = this.dialog.open(VirtualKeyboardComponent);
       dialogRef.componentInstance.isDialog = true;
       dialogRef.componentInstance.inputElement = this.element;
       dialogRef.componentInstance.layout = this.getLayout();
       dialogRef.componentInstance.placeholder = this.getPlaceHolder();
       dialogRef.componentInstance.type = this.getType();
+      dialogRef.componentInstance.selectContent = this.selectContent;
+
+
+      dialogRef
+      .afterOpen()
+      .subscribe(() => {
+        setTimeout(() => {
+          dialogRef.componentInstance.focusInput();
+        }, 150);
+      });
 
       dialogRef
         .afterClosed()
         .subscribe(() => {
           setTimeout(() => {
             this.opened = false;
+            this.virualKeyboardService.dialogOpened = false;
           }, 0);
         });
     }

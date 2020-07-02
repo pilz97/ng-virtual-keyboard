@@ -139,6 +139,9 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
    */
   private keyboardInputRef: ElementRef;
   public ngOnInit(): void {
+    if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+      return;
+    }
     if (typeof this.layout === 'string' || this.layout instanceof String) {
       this.layout = this.getLayout();
     }
@@ -155,9 +158,11 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   }
 
   private doInit() {
-    setTimeout(() => {
-      this.getKeyboardInput().nativeElement.focus();
-    }, 500);
+    if (!this.isDialog) {
+      setTimeout(() => {
+        this.focusInput();
+      }, 150);
+    }
 
     this.virtualKeyboardService.shift$.subscribe((shift: boolean) => {
       this.shift = shift;
@@ -175,9 +180,7 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
       }, 0);
     });
     this.maxLength = '';
-    if (this.selectContent){
-      this.inputElement.nativeElement.select();
-    } else if (this.inputElement !== undefined) {
+    if (!this.selectContent && this.inputElement !== undefined) {
       if (this.inputElement.nativeElement.value.length) {
         this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
       }
@@ -186,6 +189,16 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     }
 
     this.checkDisabled();
+  }
+
+  focusInput() {
+    if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+      return;
+    }
+    this.getKeyboardInput().nativeElement.focus();
+    if (this.selectContent) {
+      this.getKeyboardInput().nativeElement.select();
+    }
   }
 
   private keyWasPressed: boolean = false;
@@ -198,6 +211,9 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
   }
 
   setInputRef(ref) {
+    if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+      return;
+    }
     if (!!this.inputElement) {
       this.inputElement.nativeElement.removeEventListener('click', this.updateCaretPosition.bind(this));
     }
@@ -321,6 +337,13 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
     if(this.inputElement === undefined) {
       return;
     }
+    const { selectionStart, selectionEnd } = this.inputElement.nativeElement;
+    if (selectionStart !== selectionEnd && selectionEnd > selectionStart) {
+      const origValue = this.inputElement.nativeElement.value.toString();
+      let newValue = origValue.substring(0, selectionStart) +
+      origValue.substring(selectionEnd, origValue.length) ;
+      this.inputElement.nativeElement.value = newValue;
+    }
 
     // We have caret position, so attach character to specified position
     if (!isNaN(this.caretPosition)) {
@@ -361,7 +384,14 @@ export class VirtualKeyboardComponent implements OnInit, OnDestroy {
         const currentValue = this.inputElement.nativeElement.value;
 
         // We have a caret position, so we need to remove char from that position
-        if (!isNaN(this.caretPosition)) {
+        const { selectionStart, selectionEnd } = this.inputElement.nativeElement;
+        if (selectionStart !== selectionEnd && selectionEnd > selectionStart) {
+          const origValue = this.inputElement.nativeElement.value.toString();
+          let newValue = origValue.substring(0, selectionStart) +
+          origValue.substring(selectionEnd, origValue.length) ;
+          this.inputElement.nativeElement.value = newValue;
+        }
+        else if (!isNaN(this.caretPosition)) {
           // And current position must > 0
           if (this.caretPosition > 0) {
             const start = currentValue.slice(0, this.caretPosition - 1);

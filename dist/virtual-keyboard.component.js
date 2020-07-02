@@ -40,6 +40,9 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         }
     };
     VirtualKeyboardComponent.prototype.ngOnInit = function () {
+        if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+            return;
+        }
         if (typeof this.layout === 'string' || this.layout instanceof String) {
             this.layout = this.getLayout();
         }
@@ -55,9 +58,11 @@ var VirtualKeyboardComponent = /** @class */ (function () {
     };
     VirtualKeyboardComponent.prototype.doInit = function () {
         var _this = this;
-        setTimeout(function () {
-            _this.getKeyboardInput().nativeElement.focus();
-        }, 500);
+        if (!this.isDialog) {
+            setTimeout(function () {
+                _this.focusInput();
+            }, 150);
+        }
         this.virtualKeyboardService.shift$.subscribe(function (shift) {
             _this.shift = shift;
         });
@@ -71,16 +76,22 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             }, 0);
         });
         this.maxLength = '';
-        if (this.selectContent) {
-            this.inputElement.nativeElement.select();
-        }
-        else if (this.inputElement !== undefined) {
+        if (!this.selectContent && this.inputElement !== undefined) {
             if (this.inputElement.nativeElement.value.length) {
                 this.virtualKeyboardService.setCaretPosition(this.inputElement.nativeElement.value.length);
             }
             this.maxLength = this.inputElement.nativeElement.maxLength > 0 ? this.inputElement.nativeElement.maxLength : '';
         }
         this.checkDisabled();
+    };
+    VirtualKeyboardComponent.prototype.focusInput = function () {
+        if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+            return;
+        }
+        this.getKeyboardInput().nativeElement.focus();
+        if (this.selectContent) {
+            this.getKeyboardInput().nativeElement.select();
+        }
     };
     VirtualKeyboardComponent.prototype.getKeyWasPressed = function () {
         return this.keyWasPressed;
@@ -89,6 +100,9 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         this.keyWasPressed = value;
     };
     VirtualKeyboardComponent.prototype.setInputRef = function (ref) {
+        if (!this.isDialog && this.virtualKeyboardService.dialogOpened) {
+            return;
+        }
         if (!!this.inputElement) {
             this.inputElement.nativeElement.removeEventListener('click', this.updateCaretPosition.bind(this));
         }
@@ -197,6 +211,13 @@ var VirtualKeyboardComponent = /** @class */ (function () {
         if (this.inputElement === undefined) {
             return;
         }
+        var _a = this.inputElement.nativeElement, selectionStart = _a.selectionStart, selectionEnd = _a.selectionEnd;
+        if (selectionStart !== selectionEnd && selectionEnd > selectionStart) {
+            var origValue = this.inputElement.nativeElement.value.toString();
+            var newValue = origValue.substring(0, selectionStart) +
+                origValue.substring(selectionEnd, origValue.length);
+            this.inputElement.nativeElement.value = newValue;
+        }
         // We have caret position, so attach character to specified position
         if (!isNaN(this.caretPosition)) {
             value = [
@@ -233,7 +254,14 @@ var VirtualKeyboardComponent = /** @class */ (function () {
             case 'Backspace':
                 var currentValue = this.inputElement.nativeElement.value;
                 // We have a caret position, so we need to remove char from that position
-                if (!isNaN(this.caretPosition)) {
+                var _a = this.inputElement.nativeElement, selectionStart = _a.selectionStart, selectionEnd = _a.selectionEnd;
+                if (selectionStart !== selectionEnd && selectionEnd > selectionStart) {
+                    var origValue = this.inputElement.nativeElement.value.toString();
+                    var newValue = origValue.substring(0, selectionStart) +
+                        origValue.substring(selectionEnd, origValue.length);
+                    this.inputElement.nativeElement.value = newValue;
+                }
+                else if (!isNaN(this.caretPosition)) {
                     // And current position must > 0
                     if (this.caretPosition > 0) {
                         var start = currentValue.slice(0, this.caretPosition - 1);

@@ -1,14 +1,17 @@
 import { ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { KeyboardLayout } from './layouts';
+import { VirtualKeyboardService } from './virtual-keyboard.service';
 export declare class NgVirtualKeyboardDirective {
     private element;
     private dialog;
+    private virualKeyboardService;
     private opened;
     private focus;
     layout: KeyboardLayout | string;
     placeholder: string;
     type: string;
+    selectContent: boolean;
     onWindowBlur(): void;
     onWindowFocus(): void;
     onFocus(): void;
@@ -19,7 +22,7 @@ export declare class NgVirtualKeyboardDirective {
      * @param {ElementRef}  element
      * @param {MatDialog}    dialog
      */
-    constructor(element: ElementRef, dialog: MatDialog);
+    constructor(element: ElementRef, dialog: MatDialog, virualKeyboardService: VirtualKeyboardService);
     /**
      * Method to open virtual keyboard
      */

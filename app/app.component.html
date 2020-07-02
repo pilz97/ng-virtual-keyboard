@@ -63,7 +63,7 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
     <div fxLayout="column wrap">
       <h2>Demos</h2>
       <div fxLayout="column" >
-          <input #testInput [ng-virtual-onscreen-keyboard]="keyboardRef" [value]="test">
+          <input #testInput [ng-virtual-onscreen-keyboard]="keyboardRef" [value]="test" (click)="selectContentOnClick($event)">
           <input #testInput2 [ng-virtual-onscreen-keyboard]="keyboardRef" [value]="123">
           <virtual-keyboard #keyboardRef [layout]="customLayoutTest" [selectContent]="true"></virtual-keyboard>
       </div>
@@ -101,10 +101,11 @@ export class AppModule {{ '{' }} {{ '}' }}</code></pre>
           <strong class="text-right" fxFlex="180px">{{ layout.name }}</strong>
 
           <mat-form-field fxFlex="150px">
-            <input value=""
+            <input value="abc1"
               matInput
               popup-keyboard
               [popup-keyboard-layout]="layout.layout"
+              [popup-keyboard-select-content]="true"
             />
           </mat-form-field>
 

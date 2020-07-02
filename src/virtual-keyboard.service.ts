@@ -6,6 +6,7 @@ export class VirtualKeyboardService {
   public shift$: ReplaySubject<boolean> = new ReplaySubject(1);
   public capsLock$: ReplaySubject<boolean> = new ReplaySubject(1);
   public caretPosition$: ReplaySubject<number> = new ReplaySubject(1);
+  public dialogOpened = false;
 
   private capsLock = false;
   private shift = false;

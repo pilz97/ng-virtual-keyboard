@@ -45,6 +45,7 @@ export declare class VirtualKeyboardComponent implements OnInit, OnDestroy {
     private keyboardInputRef;
     ngOnInit(): void;
     private doInit;
+    focusInput(): void;
     private keyWasPressed;
     getKeyWasPressed(): boolean;
     setKeyWasPressed(value: boolean): void;

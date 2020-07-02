@@ -4,6 +4,7 @@ var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
 var virtual_keyboard_component_1 = require("./virtual-keyboard.component");
 var layouts_1 = require("./layouts");
+var virtual_keyboard_service_1 = require("./virtual-keyboard.service");
 var NgVirtualKeyboardDirective = /** @class */ (function () {
     /**
      * Constructor of the class.
@@ -11,11 +12,13 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
      * @param {ElementRef}  element
      * @param {MatDialog}    dialog
      */
-    function NgVirtualKeyboardDirective(element, dialog) {
+    function NgVirtualKeyboardDirective(element, dialog, virualKeyboardService) {
         this.element = element;
         this.dialog = dialog;
+        this.virualKeyboardService = virualKeyboardService;
         this.opened = false;
         this.focus = true;
+        this.selectContent = false;
     }
     NgVirtualKeyboardDirective.prototype.onWindowBlur = function () {
         this.focus = false;
@@ -39,18 +42,28 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
         var _this = this;
         if (!this.opened && this.focus) {
             this.opened = true;
-            var dialogRef = void 0;
-            dialogRef = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
-            dialogRef.componentInstance.isDialog = true;
-            dialogRef.componentInstance.inputElement = this.element;
-            dialogRef.componentInstance.layout = this.getLayout();
-            dialogRef.componentInstance.placeholder = this.getPlaceHolder();
-            dialogRef.componentInstance.type = this.getType();
-            dialogRef
+            var dialogRef_1;
+            this.virualKeyboardService.dialogOpened = true;
+            dialogRef_1 = this.dialog.open(virtual_keyboard_component_1.VirtualKeyboardComponent);
+            dialogRef_1.componentInstance.isDialog = true;
+            dialogRef_1.componentInstance.inputElement = this.element;
+            dialogRef_1.componentInstance.layout = this.getLayout();
+            dialogRef_1.componentInstance.placeholder = this.getPlaceHolder();
+            dialogRef_1.componentInstance.type = this.getType();
+            dialogRef_1.componentInstance.selectContent = this.selectContent;
+            dialogRef_1
+                .afterOpen()
+                .subscribe(function () {
+                setTimeout(function () {
+                    dialogRef_1.componentInstance.focusInput();
+                }, 150);
+            });
+            dialogRef_1
                 .afterClosed()
                 .subscribe(function () {
                 setTimeout(function () {
                     _this.opened = false;
+                    _this.virualKeyboardService.dialogOpened = false;
                 }, 0);
             });
         }
@@ -114,12 +127,14 @@ var NgVirtualKeyboardDirective = /** @class */ (function () {
     /** @nocollapse */
     NgVirtualKeyboardDirective.ctorParameters = function () { return [
         { type: core_1.ElementRef },
-        { type: material_1.MatDialog }
+        { type: material_1.MatDialog },
+        { type: virtual_keyboard_service_1.VirtualKeyboardService }
     ]; };
     NgVirtualKeyboardDirective.propDecorators = {
         layout: [{ type: core_1.Input, args: ['popup-keyboard-layout',] }],
         placeholder: [{ type: core_1.Input, args: ['popup-keyboard-placeholder',] }],
         type: [{ type: core_1.Input, args: ['popup-keyboard-type',] }],
+        selectContent: [{ type: core_1.Input, args: ['popup-keyboard-select-content',] }],
         onWindowBlur: [{ type: core_1.HostListener, args: ['window:blur',] }],
         onWindowFocus: [{ type: core_1.HostListener, args: ['window:focus',] }],
         onFocus: [{ type: core_1.HostListener, args: ['focus',] }],
